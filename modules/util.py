@@ -1,16 +1,23 @@
 import pandas as pd
-import quandl
 import datetime
 import numpy as np
-import keyring
-
-QUANDL_AUTH_TOKEN = keyring.get_password('handrew', 'quandl')
-PRICE_FIELD = 'Adj_Close'
-DEFAULT_VOL_WINDOW = 200 # a little less than a year 
-
+import requests
+DEFAULT_VOL_WINDOW = 200 # a little less than a year
+PRICE_FIELD = 'close'
+URL = 'https://www.barchart.com/proxies/timeseries/queryeod.ashx?data=daily&maxrecords=10000&dividends=true&daystoexpiration=1'
 
 def get_returns(ticker, start=datetime.datetime(1940, 1, 1), end=datetime.datetime.now(), period=1):
-	df = quandl.get('EOD/' + ticker, authtoken=QUANDL_AUTH_TOKEN)
+	res = requests.get('%s&symbol=%s' % (URL, ticker))
+	lines = res.text.split('\n')
+	arrays = [line.split(',') for line in lines]
+	df = pd.DataFrame.from_records(arrays, columns=['symbol', 'date', 'open', 'high', 'low', 'close', 'volume'])
+	df.set_index('date')
+	df = df.dropna()
+	df['open'] = df['open'].astype(float)
+	df['high'] = df['high'].astype(float)
+	df['low'] = df['low'].astype(float)
+	df['close'] = df['close'].astype(float)
+	df['volume'] = df['volume'].astype(float)
 	df['Returns'] = df[PRICE_FIELD].pct_change(period)
 	df['Log Returns'] = np.log(df[PRICE_FIELD]) - np.log(df[PRICE_FIELD].shift(1))
 	return df

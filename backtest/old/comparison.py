@@ -5,7 +5,7 @@ import pdb
 import numpy as np
 import keyring
 
-QUANDL_AUTH_TOKEN = keyring.get_password('handrew', 'quandl')
+QUANDL_AUTH_TOKEN = keyring.get_password('handrew', 'zhiguo_wang')
 
 # PURPOSE OF THIS SCRIPT:
 # Take "aw-simulated-returns.csv" and remove #N/As and pull S&P price data 
