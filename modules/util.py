@@ -11,7 +11,7 @@ def get_returns(ticker, start=datetime.datetime(1940, 1, 1), end=datetime.dateti
 	lines = res.text.split('\n')
 	arrays = [line.split(',') for line in lines]
 	df = pd.DataFrame.from_records(arrays, columns=['symbol', 'date', 'open', 'high', 'low', 'close', 'volume'])
-	df.set_index('date')
+	df.index = df['date']
 	df = df.dropna()
 	df['open'] = df['open'].astype(float)
 	df['high'] = df['high'].astype(float)
