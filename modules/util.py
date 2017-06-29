@@ -20,6 +20,7 @@ def get_returns(ticker, start=datetime.datetime(1940, 1, 1), end=datetime.dateti
 	df['volume'] = df['volume'].astype(float)
 	df['Returns'] = df[PRICE_FIELD].pct_change(period)
 	df['Log Returns'] = np.log(df[PRICE_FIELD]) - np.log(df[PRICE_FIELD].shift(1))
+	df.to_csv('output/%s.csv' % ticker)
 	return df
 
 

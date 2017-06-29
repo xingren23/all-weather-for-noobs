@@ -6,7 +6,7 @@ WEIGHTS_FILE = "output/weights.csv"
 # INPUT HERE
 
 TICKERS = {
-	"stocks": ['SPY', 'QQQ', 'EWJ', 'ASHR'],
+	"stocks": ['SPY', 'QQQ', 'EWJ', 'FXI'],
 	"commodities": ['DBC'],
 	"corporate credit": ['LQD'],
 	"EM credit": ['EMB'],  # empty for now, can add
