@@ -3,6 +3,7 @@
 import pandas as pd
 import numpy as np
 from scipy.optimize import minimize
+import pprint
 
  # 风险预算优化
 def calculate_portfolio_var(w,V):
@@ -36,36 +37,45 @@ def total_weight_constraint(x):
 def long_only_constraint(x):
     return x
 
-def calcu_w(x, V):
+def calcu_w(x, V, w0):
     """
     # 根据资产预期目标风险贡献度来计算各资产的权重
-    :param x: 风险贡献度向量 map
+    :param w0: 初始化权重
+    :param x: 风险贡献度向量
     :param V: 资产的协方差矩阵
     :return:
     """
-    w0 = [1.0/len(x) for i in x]
-    x_t = x.values()
-    print x_t, w0
-    print V
+    x_t = x
     cons = ({'type': 'eq', 'fun': total_weight_constraint}, {'type': 'ineq', 'fun': long_only_constraint})
     res= minimize(risk_budget_objective, w0, args=[V,x_t], method='SLSQP',constraints=cons, options={'disp': True})
-    weights = {}
-    for i, item in enumerate(x):
-        weights[item] = res.x[i]
+    weights = res.x
     return weights
 
 
 if __name__ == "__main__":
+    pp = pprint.PrettyPrinter(indent=4)
+
     # risk weight to value weight
-    tickers = ['SPY', 'QQQ', 'EWJ', 'FXI', 'DBC', 'LQD', 'EMB', 'TLT', 'IEF', 'GLD']
+    tickers = ['DBC', 'EMB', 'EWJ', 'FXI', 'GLD', 'IEF', 'LQD', 'QQQ', 'SPY', 'TLT']
     data_pd = pd.DataFrame()
-    x = {}
+    x = [0.075, 0.075, 0.054,0.075,0.075,0.122,0.075,0.080,0.090,0.29]
     for ticker in tickers:
         data = pd.read_csv('output/%s.csv' % ticker, index_col='date')
         data_pd[ticker] = data['Returns']
-        x[ticker] = 1.0 / len(tickers)
 
     data_pd = data_pd.dropna()
     V = np.matrix(data_pd.corr(min_periods=255*2))
-    weights = calcu_w(x, V)
-    print weights
+    items = []
+    for i in range(1,2):
+        w0 = []
+        for ticker in tickers:
+            w0.append(np.random.random_integers(1,100)/100.0)
+
+        print x
+        weights = calcu_w(x, V, w0)
+        items.append(weights)
+        pp.pprint(weights)
+        rc = calculate_risk_contribution(weights, V)
+        print rc
+    # print pd.DataFrame(items)
+

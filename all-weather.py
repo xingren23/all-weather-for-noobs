@@ -1,3 +1,6 @@
+# _*_ coding:utf8 _*_
+# !/usr/bin/env python
+
 import pandas as pd
 import datetime
 import collections
@@ -204,7 +207,7 @@ def perform_variance_overrides(ticker_volatilities):
 def get_ticker_volatilities(ticker_data):
 	ticker_volatilities = {}
 	for ticker in ticker_data:
-		ticker_volatilities[ticker] = util.get_annualized_variance_of_series(ticker_data[ticker]['Returns'], window=VOL_WINDOW)
+		ticker_volatilities[ticker] = util.get_annualized_volatility_of_series(ticker_data[ticker]['Returns'], window=VOL_WINDOW)
 
 	ticker_volatilities = perform_variance_overrides(ticker_volatilities)
 	return ticker_volatilities
@@ -244,10 +247,17 @@ def main():
 
 	# risk weight to value weight
 	ticker_data_pd = pd.DataFrame()
+	risk_weights = []
 	for key in ticker_data:
 		ticker_data_pd[key] = ticker_data[key]['Returns']
+		risk_weights.append(risk_weight_dict[key])
+	print ticker_data_pd
 	V = np.matrix(ticker_data_pd.dropna().corr())
-	weight_dict = calcu_w(risk_weight_dict, V)
+
+	weights = calcu_w(risk_weights, V, [0.1 for i in risk_weight_dict])
+	value_weight_dict = {}
+	for i, key in enumerate(ticker_data):
+		value_weight_dict[key] = weights[i]
 
 	print "\n>> Volatilities"
 	pp.pprint(ticker_volatilities)
@@ -258,10 +268,10 @@ def main():
 	print "\n>> Final risk weights"
 	pp.pprint(risk_weight_dict)
 	print "\n>> Final value weights"
-	pp.pprint(weight_dict)
+	pp.pprint(value_weight_dict)
 
-	update_weight_file(weight_dict)
-	backtesting.backtest(weight_dict, output=True) # yes, this is backtesting with weights we could have only known today, so it's not super rigorous
+	update_weight_file(value_weight_dict)
+	backtesting.backtest(value_weight_dict, output=True) # yes, this is backtesting with weights we could have only known today, so it's not super rigorous
 
 
 if __name__ == "__main__":

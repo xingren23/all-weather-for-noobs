@@ -1,3 +1,5 @@
+# _*_ coding:utf8 _*_
+# !/usr/bin/env python
 import pandas as pd
 import datetime
 import numpy as np
@@ -23,9 +25,13 @@ def get_returns(ticker, start=datetime.datetime(1940, 1, 1), end=datetime.dateti
 	return df
 
 
-# we want variance so that when we sum, we can just do the straight sum
-def get_annualized_variance_of_series(series, window=DEFAULT_VOL_WINDOW):
-	window_std = np.std(series.tail(window))
-	variance = window_std ** 2
-	ann_var = variance * np.sqrt(252) # 252 is number of trading days in a year
+def get_annualized_volatility_of_series(series, window=DEFAULT_VOL_WINDOW):
+	"""
+	计算年化波动率
+	:param series:
+	:param window:
+	:return:
+	"""
+	std = np.std(series.tail(window))
+	ann_var = std * np.sqrt(252) # 252 is number of trading days in a year
 	return ann_var
