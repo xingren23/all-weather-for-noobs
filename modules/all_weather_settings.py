@@ -16,11 +16,11 @@ TICKERS = {
 
 TICKER_VOLATILITY_OVERRIDES = {}
 OVERRIDE_TICKERS = [
-	'SPY', 'QQQ', 'EWJ', 'ASHR', 'DBC', 'LQD', 'EMB', 'TLT', 'IEF', 'GLD'
+	'SPY', 'QQQ', 'EWJ', 'FXI', 'DBC', 'LQD', 'EMB', 'TLT', 'IEF', 'GLD'
 ]
 # TICKER_VOLATILITY_OVERRIDES = get_implied_volatilities_for_tickers(OVERRIDE_TICKERS)
 
-VOL_WINDOW = 60
+VOL_WINDOW = 120
 
 ###############################################
 
