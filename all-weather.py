@@ -73,6 +73,7 @@ def finalize_ticker_weights(asset_class_weights, environment_weights, box_weight
 		"corporate credit": corporate_credit_weight
 	}
 
+
 	weights_by_asset_predefined = {
 		"stocks": 0.30,
 		"commodities": 0.075,
