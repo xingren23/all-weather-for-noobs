@@ -6,7 +6,6 @@ import datetime
 def backtest(weight_dict, output=False):
 	print "Backtesting..."
 	new_weight_dict = weight_dict.copy()
-	del new_weight_dict['Date'] 
 
 	start = datetime.datetime(1940, 1, 1)
 	end = datetime.datetime.now()

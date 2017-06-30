@@ -6,6 +6,7 @@ import modules.util as util
 import modules.backtesting as backtesting
 import pprint
 from modules.all_weather_settings import *
+from modules.risk_parity import calcu_w
 
 ##### IMPLEMENTATION DETAILS ##### 
 # First we need to equalize the volatility in each growth / inflation box 
@@ -237,7 +238,16 @@ def main():
 	# then treat each box as an asset itself in a four-asset portfolio and equalize contributions
 	environment_weights = get_environment_weights(ticker_volatilities, asset_class_weights, box_weights) 
 	# find individual asset weight by multiplying box_weights and environment_weights per my all weather configuration
-	weight_dict = finalize_ticker_weights(asset_class_weights, environment_weights, box_weights)
+	risk_weight_dict = finalize_ticker_weights(asset_class_weights, environment_weights, box_weights)
+	date = risk_weight_dict['Date']
+	del risk_weight_dict['Date']
+
+	# risk weight to value weight
+	ticker_data_pd = pd.DataFrame()
+	for key in ticker_data:
+		ticker_data_pd[key] = ticker_data[key]['Returns']
+	V = np.matrix(ticker_data_pd.dropna().corr())
+	weight_dict = calcu_w(risk_weight_dict, V)
 
 	print "\n>> Volatilities"
 	pp.pprint(ticker_volatilities)
@@ -245,7 +255,9 @@ def main():
 	pp.pprint(box_weights)
 	print "\n>> Environment weights"
 	pp.pprint(environment_weights)
-	print "\n>> Final weights"
+	print "\n>> Final risk weights"
+	pp.pprint(risk_weight_dict)
+	print "\n>> Final value weights"
 	pp.pprint(weight_dict)
 
 	update_weight_file(weight_dict)
