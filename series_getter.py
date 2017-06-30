@@ -1,10 +1,8 @@
 import pandas as pd
 import datetime
-import pdb
 import numpy as np
-import sys
 import modules.util as util
-from modules.all_weather_settings import *
+from modules.all_weather_settings import TICKERS
 
 # Use this to get price data for any ticker from Yahoo! Finance
 # as such: python series_getter.py VTI

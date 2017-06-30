@@ -1,7 +1,6 @@
 from bs4 import BeautifulSoup
 import requests
 import numpy as np
-from all_weather_settings import OVERRIDE_TICKERS
 
 # implied volatility is, in industry, usually in terms of annualized standard deviation
 def get_implied_volatility_for_ticker(ticker):
@@ -36,5 +35,6 @@ def convert_annualized_stddev_to_annualized_variance(ann_std):
 	return variance * np.sqrt(252)
 
 if __name__ == "__main__":
-	print get_implied_volatilities_for_tickers(OVERRIDE_TICKERS)
-	print get_implied_volatilities_for_tickers(OVERRIDE_TICKERS, get_variance = False)
+	tickers = ['SPY', 'QQQ', 'EWJ', 'ASHR', 'DBC', 'LQD', 'EMB', 'TLT', 'IEF', 'GLD']
+	print get_implied_volatilities_for_tickers(tickers)
+	print get_implied_volatilities_for_tickers(tickers, get_variance = False)
