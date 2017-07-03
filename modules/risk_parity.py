@@ -76,6 +76,12 @@ if __name__ == "__main__":
         items.append(weights)
         pp.pprint(weights)
         rc = calculate_risk_contribution(weights, V)
-        print rc
+        print np.asarray(rc.T)[0]
+        value_weight_dict = {}
+        for j, key in enumerate(tickers):
+            value_weight_dict[key] = np.squeeze(np.asarray(rc.T))[j]/sum(np.squeeze(np.asarray(rc.T)))
+        pp.pprint(value_weight_dict)
+
+
     # print pd.DataFrame(items)
 
