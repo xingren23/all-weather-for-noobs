@@ -20,7 +20,7 @@ def main():
 
 		print ticker + " Standard Deviation"
 		print np.std(tick_df['Returns'])
-		tick_df.to_csv("output/%s.csv" % ticker)
+		tick_df.to_csv("barchart/%s.csv" % ticker)
 
 	FUTURE_TICKERS = ['ZNU17']
 	for future_ticker in FUTURE_TICKERS:
@@ -30,7 +30,7 @@ def main():
 
 		print future_ticker + " Standard Deviation"
 		print np.std(tick_df['Returns'])
-		tick_df.to_csv("output/%s.csv" % future_ticker)
+		tick_df.to_csv("data/barchart/%s.csv" % future_ticker)
 
 
 if __name__ == "__main__":

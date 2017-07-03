@@ -1,8 +1,8 @@
 import pandas as pd
 
 
-zun17 = pd.read_csv('output/ZNU17.csv', index_col = 'date')
-tlt = pd.read_csv('output/TLT.csv', index_col = 'date')
+zun17 = pd.read_csv('data/barchart/ZNU17.csv', index_col = 'date')
+tlt = pd.read_csv('data/barchart/TLT.csv', index_col = 'date')
 
 result = pd.DataFrame()
 result['zun17-std-60'] = zun17['Standard Deviation (60d)']
