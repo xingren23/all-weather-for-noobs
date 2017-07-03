@@ -19,6 +19,6 @@ def main():
 		print np.std(tick_df['Returns'])
 		tick_df.to_csv("barchart/%s.csv" % ticker)
 
-
+	MORE_TICKERS = ['QQQ', '']
 if __name__ == "__main__":
 	main()
