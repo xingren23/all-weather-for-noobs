@@ -13,12 +13,14 @@ def main():
 
 	# tickers = sys.argv[1:] # command line arguments
 
+	MORE_TICKERS = ["$IUXX", "$SPX"]
+	OVERRIDE_TICKERS.extend(MORE_TICKERS)
 	for ticker in OVERRIDE_TICKERS:
 		tick_df = util.get_returns(ticker, start, end)
 
 		print np.std(tick_df['Returns'])
-		tick_df.to_csv("barchart/%s.csv" % ticker)
+		tick_df.to_csv("data/barchart/%s.csv" % ticker)
 
-	MORE_TICKERS = ['QQQ', '']
+
 if __name__ == "__main__":
 	main()
