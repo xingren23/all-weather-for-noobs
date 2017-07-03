@@ -1,4 +1,4 @@
-time,open,price,settleprice,close,high,low,amount,volume,openinterest,symbol
+date,open,price,settleprice,close,high,low,amount,volume,openinterest,symbol
 2011-06-22,,,,,,,,,,TY_INDEX_ALL_POSITION
 2011-06-23,,,,,,,,,,TY_INDEX_ALL_POSITION
 2011-06-24,,,,,,,,,,TY_INDEX_ALL_POSITION

@@ -1,4 +1,4 @@
-time,symbol,open,high,low,close,volume,amount,name,openinterest,settleprice,price
+date,symbol,open,high,low,close,volume,amount,name,openinterest,settleprice,price
 2017-03-23,TY1712,,,,123.8906,,,美国10年期国债1712,,123.8906,123.8906
 2017-03-24,TY1712,,,,124.0,,,美国10年期国债1712,,124.0,124.0
 2017-03-27,TY1712,,,,124.1563,,,美国10年期国债1712,,124.1563,124.1563

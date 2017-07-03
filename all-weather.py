@@ -220,7 +220,6 @@ def get_ticker_data(start=datetime.datetime(1940, 1, 1), end = datetime.datetime
 	for group in TICKERS:
 		for ticker in TICKERS[group]:
 			ret[ticker] = util.get_returns(ticker, start=start, end=end)
-
 	return ret
 
 

@@ -1,4 +1,4 @@
-time,symbol,open,high,low,close,volume,amount,name,openinterest,settleprice,price
+date,symbol,open,high,low,close,volume,amount,name,openinterest,settleprice,price
 2016-06-22,TY1703,,,,129.8438,0.0,,美国10年期国债1703,0.0,129.8438,129.8438
 2016-06-23,TY1703,,,,129.25,0.0,,美国10年期国债1703,0.0,129.25,129.25
 2016-06-24,TY1703,,,,130.8125,0.0,,美国10年期国债1703,0.0,130.8125,130.8125

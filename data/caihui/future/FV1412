@@ -1,4 +1,4 @@
-time,symbol,open,high,low,close,volume,amount,name,openinterest,settleprice,price
+date,symbol,open,high,low,close,volume,amount,name,openinterest,settleprice,price
 2013-10-01,FV1412,,,,120.0,0.0,,美国5年期国债1412,0.0,120.0,120.0
 2013-10-02,FV1412,,,,120.1875,0.0,,美国5年期国债1412,0.0,120.1875,120.1875
 2013-10-03,FV1412,,,,120.2969,0.0,,美国5年期国债1412,0.0,120.2969,120.2969

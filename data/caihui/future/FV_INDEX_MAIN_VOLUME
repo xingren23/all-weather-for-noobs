@@ -1,4 +1,4 @@
-time,symbol,open,high,low,close,volume,amount,name,openinterest,settleprice,price,last_close,change_main,forward_percent,index_symbol
+date,symbol,open,high,low,close,volume,amount,name,openinterest,settleprice,price,last_close,change_main,forward_percent,index_symbol
 2010-10-01,FV1112,,,,117.8125,,,美国5年期国债1112,,117.8125,117.8125,,0,0.92564900191,FV_INDEX_MAIN_VOLUME
 2010-10-04,FV1112,,,,118.0469,,,美国5年期国债1112,,118.0469,118.0469,117.8125,0,0.92564900191,FV_INDEX_MAIN_VOLUME
 2010-10-05,FV1112,,,,118.1406,,,美国5年期国债1112,,118.1406,118.1406,118.0469,0,0.92564900191,FV_INDEX_MAIN_VOLUME

@@ -1,4 +1,4 @@
-time,symbol,open,high,low,close,volume,amount,name,openinterest,settleprice,price
+date,symbol,open,high,low,close,volume,amount,name,openinterest,settleprice,price
 2012-03-22,TY1306,,,,125.0156,,,美国10年期国债1306,,125.0156,125.0156
 2012-03-23,TY1306,,,,125.3281,,,美国10年期国债1306,,125.3281,125.3281
 2012-03-26,TY1306,,,,125.3438,,,美国10年期国债1306,,125.3438,125.3438

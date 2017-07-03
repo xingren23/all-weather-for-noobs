@@ -1,4 +1,4 @@
-time,symbol,open,high,low,close,volume,amount,name,openinterest,settleprice,price,last_close,change_main,forward_percent,index_symbol
+date,symbol,open,high,low,close,volume,amount,name,openinterest,settleprice,price,last_close,change_main,forward_percent,index_symbol
 2010-10-04,MGC1104,,,,1320.1,,,COMEX微型黄金1104,,1320.1,1320.1,,0,1.06401168424,MGC_INDEX_MAIN_POSITION
 2010-10-05,MGC1104,,,,1343.7,,,COMEX微型黄金1104,,1343.7,1343.7,1320.1,0,1.06401168424,MGC_INDEX_MAIN_POSITION
 2010-10-06,MGC1104,,,,1351.1,,,COMEX微型黄金1104,,1351.1,1351.1,1343.7,0,1.06401168424,MGC_INDEX_MAIN_POSITION

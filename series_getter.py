@@ -15,22 +15,9 @@ def main():
 
 	for ticker in OVERRIDE_TICKERS:
 		tick_df = util.get_returns(ticker, start, end)
-		tick_df['Standard Deviation (60d)'] = pd.rolling_std(tick_df['Returns'], window=60)
-		tick_df['Standard Deviation (200d)'] = pd.rolling_std(tick_df['Returns'], window=200)
 
-		print ticker + " Standard Deviation"
 		print np.std(tick_df['Returns'])
 		tick_df.to_csv("barchart/%s.csv" % ticker)
-
-	FUTURE_TICKERS = ['ZNU17']
-	for future_ticker in FUTURE_TICKERS:
-		tick_df = util.get_future_returns(future_ticker, start, end)
-		tick_df['Standard Deviation (60d)'] = pd.rolling_std(tick_df['Returns'], window=60)
-		tick_df['Standard Deviation (200d)'] = pd.rolling_std(tick_df['Returns'], window=200)
-
-		print future_ticker + " Standard Deviation"
-		print np.std(tick_df['Returns'])
-		tick_df.to_csv("data/barchart/%s.csv" % future_ticker)
 
 
 if __name__ == "__main__":

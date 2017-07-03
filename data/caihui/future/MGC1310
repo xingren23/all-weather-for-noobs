@@ -1,4 +1,4 @@
-time,symbol,open,high,low,close,volume,amount,name,openinterest,settleprice,price
+date,symbol,open,high,low,close,volume,amount,name,openinterest,settleprice,price
 2011-11-30,MGC1310,,,,1779.7,,,COMEX微型黄金1310,,1779.7,1779.7
 2011-12-01,MGC1310,,,,1769.6,,,COMEX微型黄金1310,,1769.6,1769.6
 2011-12-02,MGC1310,,,,1782.0,,,COMEX微型黄金1310,,1782.0,1782.0

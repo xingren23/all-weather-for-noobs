@@ -1,5 +1,10 @@
 import pandas as pd
+import modules.util as util
 
+
+future_ticker = 'ZNU17'
+tick_df = util.get_future_returns('ZNU17')
+tick_df.to_csv("data/barchart/%s.csv" % future_ticker)
 
 zun17 = pd.read_csv('data/barchart/ZNU17.csv', index_col = 'date')
 tlt = pd.read_csv('data/barchart/TLT.csv', index_col = 'date')
