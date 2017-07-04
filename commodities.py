@@ -85,6 +85,15 @@ def get_asset_class_weights(tickers, ticker_volatilities):
 	return asset_class_weights
 
 
+def get_asset_class_weights_avg(tickers):
+	asset_class_weights = {}
+	for asset_class in tickers: # stocks, commodities, EM credit, etc
+		tickers_in_asset_class = tickers[asset_class]
+		ordered_weights_by_ticker = [1.0/len(tickers_in_asset_class) for ticker in tickers_in_asset_class]
+		asset_class_weights[asset_class] = dict(zip(tickers_in_asset_class, ordered_weights_by_ticker))
+
+	return asset_class_weights
+
 # Overriding historical volatility with implied
 def perform_variance_overrides(overrides_tickers, ticker_volatilities):
 	for ticker in overrides_tickers:
@@ -140,7 +149,8 @@ def main():
 	ticker_volatilities = get_ticker_volatilities(ticker_data)
 	
 	# then treat each group (like stocks) as its own portfolio and equalize volatility contributions
-	asset_class_weights = get_asset_class_weights(TICKERS, ticker_volatilities)
+	# asset_class_weights = get_asset_class_weights(TICKERS, ticker_volatilities)
+	asset_class_weights = get_asset_class_weights_avg(TICKERS)
 
 	# find individual asset weight by multiplying box_weights and environment_weights per my all weather configuration
 	risk_weight_dict = finalize_ticker_weights(TICKERS, asset_class_weights, weights_by_asset_predefined)
@@ -153,7 +163,6 @@ def main():
 	for key in ticker_data:
 		ticker_data_pd[key] = ticker_data[key]['Returns']
 		risk_weights.append(risk_weight_dict[key])
-	print ticker_data_pd
 	V = np.matrix(ticker_data_pd.dropna().corr())
 
 	weights = calcu_w(risk_weights, V, [0.1 for i in risk_weight_dict])
