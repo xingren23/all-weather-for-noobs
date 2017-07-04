@@ -112,8 +112,7 @@ def get_ticker_data(tickers, start=datetime.datetime(1940, 1, 1), end = datetime
 	ret = {}
 	for group in tickers:
 		for ticker in tickers[group]:
-			# ret[ticker] = util.get_returns(ticker, start=start, end=end)
-			ret[ticker] = pd.read_csv('data/barchart/%s.csv' % ticker)
+			ret[ticker] = util.get_future_returns(ticker, start=start, end=end)
 	return ret
 
 

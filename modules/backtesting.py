@@ -13,8 +13,7 @@ def backtest(weight_dict, output):
 	returns_dfs = []
 
 	for ticker in new_weight_dict:
-		# df = util.get_returns(ticker, start, end, period=1)
-		df = pd.read_csv('data/barchart/%s.csv' % ticker)
+		df = util.get_returns(ticker, start, end, period=1)
 		df['%s Returns' % ticker] = df['Returns']
 		df = pd.DataFrame(df['%s Returns' % ticker])
 		returns_dfs.append(df)
@@ -28,7 +27,8 @@ def backtest(weight_dict, output):
 
 	if (output):
 		outputpath = "backtest/%s" % output
-		os.mkdir(outputpath)
+		if not os.path.exists(outputpath):
+			os.mkdir(outputpath)
 		merged_df.to_csv("%s/backtest_results.csv" % outputpath)
 
 

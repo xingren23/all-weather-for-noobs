@@ -13,15 +13,8 @@ def main():
 
 	# tickers = sys.argv[1:] # command line arguments
 
-	# INDICES_TICKERS = ["$IUXX", "$SPX"]
-	# OVERRIDE_TICKERS.extend(INDICES_TICKERS)
-	# for ticker in OVERRIDE_TICKERS:
-	# 	tick_df = util.get_returns(ticker, start, end)
-    #
-	# 	print ticker, np.std(tick_df['Returns'])
-	# 	tick_df.to_csv("data/barchart/%s.csv" % ticker)
-
-	OVERRIDE_TICKERS = []
+	INDICES_TICKERS = ["$IUXX", "$SPX"]
+	OVERRIDE_TICKERS.extend(INDICES_TICKERS)
 	COMMIDITIES_TICKERS = ["DXY00","B6Y00","D6Y00","J6Y00","S6Y00","E6Y00","A6Y00","M6Y00","N6Y00","T6Y00",
 						   "L6Y00","R6Y00","CLY00","HOY00","RBY00","NGY00","QAY00","ZKY00","ZBY00","UDY00",
 						   "ZNY00","TNY00","ZFY00","ZTY00","ZQY00","GEY00","ZWY00","ZCY00","ZSY00","ZMY00",
@@ -31,7 +24,7 @@ def main():
 	OVERRIDE_TICKERS.extend(COMMIDITIES_TICKERS)
 	for ticker in OVERRIDE_TICKERS:
 		try:
-			tick_df = util.get_future_returns(ticker, start, end)
+			tick_df = util.get_returns(ticker, start, end)
 			print ticker, np.std(tick_df['Returns'])
 			tick_df.to_csv("data/barchart/%s.csv" % ticker)
 		except:
