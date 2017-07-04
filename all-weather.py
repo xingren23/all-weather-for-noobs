@@ -219,7 +219,8 @@ def get_ticker_data(start=datetime.datetime(1940, 1, 1), end = datetime.datetime
 	ret = {}
 	for group in TICKERS:
 		for ticker in TICKERS[group]:
-			ret[ticker] = util.get_returns(ticker, start=start, end=end)
+			# ret[ticker] = util.get_returns(ticker, start=start, end=end)
+			ret[ticker] = pd.read_csv('data/barchart/%s.csv' % ticker)
 	return ret
 
 
@@ -269,7 +270,7 @@ def main():
 	pp.pprint(value_weight_dict)
 
 	update_weight_file(value_weight_dict)
-	backtesting.backtest(value_weight_dict, output=True) # yes, this is backtesting with weights we could have only known today, so it's not super rigorous
+	backtesting.backtest(value_weight_dict, output='all_weather') # yes, this is backtesting with weights we could have only known today, so it's not super rigorous
 
 
 if __name__ == "__main__":

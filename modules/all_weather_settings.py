@@ -6,7 +6,7 @@ WEIGHTS_FILE = "output/weights.csv"
 # INPUT HERE
 
 TICKERS = {
-	"stocks": ['SPY', 'QQQ', 'EWJ', 'FXI', 'FEZ', ''],
+	"stocks": ['SPY', 'QQQ', 'EWJ', 'FXI'],
 	"commodities": ['DBC'],
 	"corporate credit": ['LQD'],
 	"EM credit": ['EMB'],  # empty for now, can add
@@ -15,7 +15,6 @@ TICKERS = {
 }
 
 OVERRIDE_TICKERS = [
-	'SPY', 'QQQ', 'EWJ', 'FXI', 'DBC', 'LQD', 'EMB', 'TLT', 'IEF', 'GLD'
 ]
 TICKER_VOLATILITY_OVERRIDES = get_implied_volatilities_for_tickers(OVERRIDE_TICKERS)
 

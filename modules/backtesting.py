@@ -1,9 +1,9 @@
 import pandas as pd
 import util
 import datetime
+import os
 
-
-def backtest(weight_dict, output=False):
+def backtest(weight_dict, output):
 	print "Backtesting..."
 	new_weight_dict = weight_dict.copy()
 
@@ -13,7 +13,8 @@ def backtest(weight_dict, output=False):
 	returns_dfs = []
 
 	for ticker in new_weight_dict:
-		df = util.get_returns(ticker, start, end, period=1)
+		# df = util.get_returns(ticker, start, end, period=1)
+		df = pd.read_csv('data/barchart/%s.csv' % ticker)
 		df['%s Returns' % ticker] = df['Returns']
 		df = pd.DataFrame(df['%s Returns' % ticker])
 		returns_dfs.append(df)
@@ -25,7 +26,10 @@ def backtest(weight_dict, output=False):
 		weight = new_weight_dict[ticker]
 		merged_df['Portfolio Returns'] = merged_df['Portfolio Returns'] + weight * merged_df['%s Returns' % ticker]
 
-	if (output): merged_df.to_csv("backtest_results.csv")
+	if (output):
+		outputpath = "backtest/%s" % output
+		os.mkdir(outputpath)
+		merged_df.to_csv("%s/backtest_results.csv" % outputpath)
 
 
 def merge_dataframes_by_latest_start_date(dfs):
