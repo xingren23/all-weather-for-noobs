@@ -177,7 +177,7 @@ def main():
 	print "\n>> Final value weights"
 	pp.pprint(value_weight_dict)
 
-	backtesting.backtest(value_weight_dict, output='commodities') # yes, this is backtesting with weights we could have only known today, so it's not super rigorous
+	backtesting.backtest(value_weight_dict, output='commodities_avg') # yes, this is backtesting with weights we could have only known today, so it's not super rigorous
 
 
 if __name__ == "__main__":
