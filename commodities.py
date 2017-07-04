@@ -149,8 +149,8 @@ def main():
 	ticker_volatilities = get_ticker_volatilities(ticker_data)
 	
 	# then treat each group (like stocks) as its own portfolio and equalize volatility contributions
-	# asset_class_weights = get_asset_class_weights(TICKERS, ticker_volatilities)
-	asset_class_weights = get_asset_class_weights_avg(TICKERS)
+	asset_class_weights = get_asset_class_weights(TICKERS, ticker_volatilities)
+	# asset_class_weights = get_asset_class_weights_avg(TICKERS)
 
 	# find individual asset weight by multiplying box_weights and environment_weights per my all weather configuration
 	risk_weight_dict = finalize_ticker_weights(TICKERS, asset_class_weights, weights_by_asset_predefined)
@@ -177,7 +177,7 @@ def main():
 	print "\n>> Final value weights"
 	pp.pprint(value_weight_dict)
 
-	backtesting.backtest(value_weight_dict, output='commodities_avg') # yes, this is backtesting with weights we could have only known today, so it's not super rigorous
+	backtesting.backtest(value_weight_dict, output='commodities_vol') # yes, this is backtesting with weights we could have only known today, so it's not super rigorous
 
 
 if __name__ == "__main__":
