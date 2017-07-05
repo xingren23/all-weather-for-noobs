@@ -193,7 +193,7 @@ def main():
 	result = backtesting.backtest(value_weight_dict, output='commodities') # yes, this is backtesting with weights we could have only known today, so it's not super rigorous
 	result['Portfolio Returns'] = result['Portfolio Returns'].fillna(0)
 	comm_df = pd.DataFrame()
-	comm_df['close'] = result['Portfolio Returns'].cumsum() * 100
+	comm_df['close'] = (result['Portfolio Returns'].cumsum() + 1) * 100
 	comm_df.to_csv('data/caihui/future/COMMODITIES_INDEX_MAIN_VOLUME')
 
 if __name__ == "__main__":
