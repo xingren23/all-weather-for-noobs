@@ -78,8 +78,8 @@ def finalize_ticker_weights(asset_class_weights, environment_weights, box_weight
 	}
 
 	weights_by_asset_predefined = {
-		"stocks": 0.25,
-		"commodities": 0.20,
+		"stocks": 0.30,
+		"commodities": 0.15,
 		"nominal bonds": 0.40,
 		"inflation-linked": 0.0,
 		"EM credit": 0.075,
@@ -269,7 +269,7 @@ def main():
 	pp.pprint(value_weight_dict)
 
 	update_weight_file(value_weight_dict)
-	backtesting.backtest(value_weight_dict, output='all_weather') # yes, this is backtesting with weights we could have only known today, so it's not super rigorous
+	result = backtesting.backtest(value_weight_dict, output='all_weather') # yes, this is backtesting with weights we could have only known today, so it's not super rigorous
 
 
 if __name__ == "__main__":

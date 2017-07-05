@@ -18,7 +18,7 @@ OVERRIDE_TICKERS = [
 ]
 TICKER_VOLATILITY_OVERRIDES = get_implied_volatilities_for_tickers(OVERRIDE_TICKERS)
 
-VOL_WINDOW = 252*8
+VOL_WINDOW = 252*5
 
 ###############################################
 
