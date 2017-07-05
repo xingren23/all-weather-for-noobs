@@ -141,7 +141,7 @@ def main():
 	TICKERS = {
 		"metals": ['MGC', 'SI', 'NC'],
 		"energies": ['CL', 'BC', 'HN', 'HO', 'G'],
-		"grains": ['ZW', 'C', 'ZS', 'BO'],
+		"grains": ['ZW', 'ZC', 'ZS', 'BO'],
 		"softs": ['CT', 'KC', 'SB'],
 		"meats": ['LE', 'HE', 'GF']
 	}
