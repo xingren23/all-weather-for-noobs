@@ -10,7 +10,7 @@ TICKERS = {
 	"commodities": ['COMMODITIES'],
 	"corporate credit": ['LQD'],
 	"EM credit": ['EMB'],  # empty for now, can add
-	"nominal bonds": ['TY'],
+	"nominal bonds": ['TLT'], # etf: TLT/IEF
 	"inflation-linked": []
 }
 
