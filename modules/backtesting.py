@@ -25,6 +25,7 @@ def backtest(weight_dict, output):
 		weight = new_weight_dict[ticker]
 		merged_df['Portfolio Returns'] = merged_df['Portfolio Returns'] + weight * merged_df['%s Returns' % ticker]
 
+	print merged_df['Portfolio Returns'].cumsum()
 	if (output):
 		outputpath = "backtest/%s" % output
 		if not os.path.exists(outputpath):

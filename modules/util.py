@@ -11,9 +11,13 @@ URL = 'https://www.barchart.com/proxies/timeseries/queryeod.ashx?data=daily&maxr
 
 def get_returns(ticker, start=datetime.datetime(1940, 1, 1), end=datetime.datetime.now(), period=1):
 	file = 'data/barchart/%s.csv' % ticker
+	file2 = 'data/caihui/future/%s_INDEX_MAIN_VOLUME' % ticker
 	if os.path.exists(file):
 		df = pd.read_csv(file)
+	elif os.path.exists(file2):
+		df = pd.read_csv(file2)
 	else:
+		print ticker," not found data file, get from barchart..."
 		res = requests.get('%s&symbol=%s' % (URL, ticker))
 		lines = res.text.split('\n')
 		arrays = [line.split(',') for line in lines]
@@ -21,31 +25,12 @@ def get_returns(ticker, start=datetime.datetime(1940, 1, 1), end=datetime.dateti
 		del df[7]
 		df.columns = ['symbol', 'date', 'open', 'high', 'low', 'close', 'volume']
 	df.index = df['date']
-	df = df.dropna()
+	# df = df.dropna()
 	df['open'] = df['open'].astype(float)
 	df['high'] = df['high'].astype(float)
 	df['low'] = df['low'].astype(float)
 	df['close'] = df['close'].astype(float)
 	df['volume'] = df['volume'].astype(float)
-	df['Returns'] = df[PRICE_FIELD].pct_change(period)
-	df['Log Returns'] = np.log(df[PRICE_FIELD]) - np.log(df[PRICE_FIELD].shift(1))
-	return df
-
-def get_future_returns(ticker, start=datetime.datetime(1940, 1, 1), end=datetime.datetime.now(), period=1):
-	df = pd.read_csv('data/barchart/%s.csv' % ticker)
-	if df.empty:
-		res = requests.get('%s&symbol=%s' % (URL, ticker))
-		lines = res.text.split('\n')
-		arrays = [line.split(',') for line in lines]
-		df = pd.DataFrame.from_records(arrays, columns=['symbol', 'date', 'open', 'high', 'low', 'close', 'volume', 'interest'])
-	df.index = df['date']
-	df = df.dropna()
-	df['open'] = df['open'].astype(float)
-	df['high'] = df['high'].astype(float)
-	df['low'] = df['low'].astype(float)
-	df['close'] = df['close'].astype(float)
-	df['volume'] = df['volume'].astype(float)
-	df['interest'] = df['interest'].astype(float)
 	df['Returns'] = df[PRICE_FIELD].pct_change(period)
 	df['Log Returns'] = np.log(df[PRICE_FIELD]) - np.log(df[PRICE_FIELD].shift(1))
 	return df

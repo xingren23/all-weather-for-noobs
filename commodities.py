@@ -121,7 +121,7 @@ def get_ticker_data(tickers, start=datetime.datetime(1940, 1, 1), end = datetime
 	ret = {}
 	for group in tickers:
 		for ticker in tickers[group]:
-			ret[ticker] = util.get_future_returns(ticker, start=start, end=end)
+			ret[ticker] = util.get_returns(ticker, start=start, end=end)
 	return ret
 
 
@@ -130,18 +130,28 @@ def main():
 
 	# first get ticker price and volatility data
 	print ">> Getting ticker data..."
+	# TICKERS = {
+	# 	"energies": ['CLY00', 'RBY00', 'NGY00', 'QAY00'],
+	# 	"grains": ['ZWY00', 'ZCY00', 'ZSY00'],
+	# 	"metals": ['GCY00', 'SIY00', 'HGY00'],
+	# 	"softs": ['CTY00', 'SBY00', 'CCY00'],
+	# 	"meats": ['LEY00', 'GFY00', 'HEY00']
+	# }
+
 	TICKERS = {
-		"energies": ['CLY00', 'RBY00', 'NGY00', 'QAY00'],
-		"grains": ['ZWY00', 'ZCY00', 'ZSY00'],
-		"metals": ['GCY00', 'SIY00', 'HGY00'],
-		"softs": ['CTY00', 'SBY00', 'CCY00']
+		"metals": ['MGC', 'SI', 'NC'],
+		"energies": ['CL', 'BC', 'HN', 'HO', 'G'],
+		"grains": ['ZW', 'C', 'ZS', 'BO'],
+		"softs": ['CT', 'KC', 'SB'],
+		"meats": ['LE', 'HE', 'GF']
 	}
 
 	weights_by_asset_predefined = {
-		"energies": 0.25,
-		"grains": 0.25,
-		"metals": 0.25,
-		"softs": 0.25
+		"energies": 0.2,
+		"grains": 0.2,
+		"metals": 0.2,
+		"softs": 0.2,
+		"meats": 0.2
 	}
 
 	ticker_data = get_ticker_data(TICKERS)
@@ -177,7 +187,7 @@ def main():
 	print "\n>> Final value weights"
 	pp.pprint(value_weight_dict)
 
-	backtesting.backtest(value_weight_dict, output='commodities_vol') # yes, this is backtesting with weights we could have only known today, so it's not super rigorous
+	backtesting.backtest(value_weight_dict, output='commodities_future') # yes, this is backtesting with weights we could have only known today, so it's not super rigorous
 
 
 if __name__ == "__main__":
