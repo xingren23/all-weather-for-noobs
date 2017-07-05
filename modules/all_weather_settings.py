@@ -7,11 +7,11 @@ WEIGHTS_FILE = "output/weights.csv"
 
 TICKERS = {
 	"stocks": ['SPY', 'QQQ', 'EWJ', 'FXI'],
-	"commodities": ['DBC'],
+	"commodities": ['COMMODITIES'],
 	"corporate credit": ['LQD'],
 	"EM credit": ['EMB'],  # empty for now, can add
 	"nominal bonds": ['TLT', 'IEF'],
-	"inflation-linked": ['GLD']
+	"inflation-linked": []
 }
 
 OVERRIDE_TICKERS = [

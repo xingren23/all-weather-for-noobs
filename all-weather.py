@@ -78,10 +78,10 @@ def finalize_ticker_weights(asset_class_weights, environment_weights, box_weight
 	}
 
 	weights_by_asset_predefined = {
-		"stocks": 0.30,
-		"commodities": 0.075,
+		"stocks": 0.25,
+		"commodities": 0.20,
 		"nominal bonds": 0.40,
-		"inflation-linked": 0.075,
+		"inflation-linked": 0.0,
 		"EM credit": 0.075,
 		"corporate credit": 0.075
 	}

@@ -26,11 +26,7 @@ def get_returns(ticker, start=datetime.datetime(1940, 1, 1), end=datetime.dateti
 		df.columns = ['symbol', 'date', 'open', 'high', 'low', 'close', 'volume']
 	df.index = df['date']
 	df = df.ix[df['close'].dropna().index]
-	df['open'] = df['open'].astype(float)
-	df['high'] = df['high'].astype(float)
-	df['low'] = df['low'].astype(float)
 	df['close'] = df['close'].astype(float)
-	df['volume'] = df['volume'].astype(float)
 	df['Returns'] = df[PRICE_FIELD].pct_change(period)
 	df['Log Returns'] = np.log(df[PRICE_FIELD]) - np.log(df[PRICE_FIELD].shift(1))
 	return df
