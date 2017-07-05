@@ -25,7 +25,7 @@ def get_returns(ticker, start=datetime.datetime(1940, 1, 1), end=datetime.dateti
 		del df[7]
 		df.columns = ['symbol', 'date', 'open', 'high', 'low', 'close', 'volume']
 	df.index = df['date']
-	# df = df.dropna()
+	df = df.ix[df['close'].dropna().index]
 	df['open'] = df['open'].astype(float)
 	df['high'] = df['high'].astype(float)
 	df['low'] = df['low'].astype(float)
