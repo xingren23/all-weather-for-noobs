@@ -36,25 +36,35 @@ def main():
 	for ticker in COMMIDITIES_TICKERS:
 		try:
 			print ticker, 'get all data'
-			base_price = None
-			dailyDate = None
+			ticker_data = []
 			all_contract = util.get_all_contract(ticker)
 			for item_data in all_contract['data']:
 				row_data = item_data['raw']
 				row_data['root'] = ticker
-				if not dailyDate:
-					dailyDate = row_data['dailyDate1dAgo']
 				expiredDate = row_data['contractSymbol'][row_data['contractSymbol'].index('(') + 1:row_data['contractSymbol'].index(')')]
 				if expiredDate == 'Cash':
-					row_data['year_num'] = 1/365.0
+					row_data['expiredDate'] = row_data['dailyDate1dAgo']
 				else:
-					year_num_span = datetime.datetime.strptime(expiredDate, '%b \'%y') - datetime.datetime.strptime(dailyDate, '%Y-%m-%d') + datetime.timedelta(days=15)
-					row_data['year_num'] = year_num_span.total_seconds() / (24 * 3600) / 365.0
-				if not base_price:
-					base_price = row_data['dailyLastPrice']
+					row_data['expiredDate'] = (datetime.datetime.strptime(expiredDate, '%b \'%y') + datetime.timedelta(days=15)).strftime('%Y-%m-%d')
+				row_data['main_volume'] = False
+				ticker_data.append(row_data)
+
+			ticker_pd = pd.DataFrame(ticker_data)
+			ticker_pd.index = ticker_pd['contractSymbol']
+			ticker_pd['main_volume'].ix[ticker_pd['dailyVolume'].idxmax(axis=1)] = True
+
+			base_price = None
+			dailyDate = None
+			for key, row_data in ticker_pd.iterrows():
+				if row_data['main_volume']:
+					row_data['year_num'] = 1/365.0
 					row_data['preminum'] = 0
 					row_data['implied_roll_yeild'] = None
-				else:
+					base_price = row_data['dailyLastPrice']
+					dailyDate = row_data['expiredDate']
+				elif base_price and dailyDate:
+					year_num_span = datetime.datetime.strptime(row_data['expiredDate'], '%Y-%m-%d') - datetime.datetime.strptime(dailyDate, '%Y-%m-%d') + datetime.timedelta(days=15)
+					row_data['year_num'] = year_num_span.total_seconds() / (24 * 3600) / 365.0
 					row_data['preminum'] = base_price / row_data['dailyLastPrice']
 					row_data['implied_roll_yeild'] = np.power(row_data['preminum'], row_data['year_num']).round(4) - 1
 				all_datas.append(row_data)
@@ -63,7 +73,7 @@ def main():
 			raise
 	all_pd = pd.DataFrame(all_datas)
 	all_pd.to_csv('data/barchart/ALL_COMMODITIES_%s.csv' % dailyDate)
-	print all_pd[['implied_roll_yeild', 'contractSymbol']]
+	print all_pd[['implied_roll_yeild', 'contractSymbol', 'main_volume', 'dailyVolume']]
 
 	
 if __name__ == "__main__":
