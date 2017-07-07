@@ -64,7 +64,7 @@ def main():
 				elif base_price and dailyDate:
 					year_num_span = datetime.datetime.strptime(row_data['expiredDate'], '%Y-%m-%d') - datetime.datetime.strptime(dailyDate, '%Y-%m-%d') + datetime.timedelta(days=15)
 					row_data['year_num'] = year_num_span.total_seconds() / (24 * 3600) / 365.0
-					row_data['preminum'] = base_price / row_data['dailyLastPrice']
+					row_data['preminum'] = base_price * 1.0 / row_data['dailyLastPrice']
 					row_data['implied_roll_yeild'] = np.power(row_data['preminum'], row_data['year_num']).round(4) - 1
 				all_datas.append(row_data)
 		except:
