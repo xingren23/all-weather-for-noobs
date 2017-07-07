@@ -125,7 +125,11 @@ def get_ticker_data(tickers, start=datetime.datetime(1940, 1, 1), end = datetime
 	return ret
 
 
-def main():
+def merge_commodities():
+	"""
+	通过风险平价合成商品期货
+	:return:
+	"""
 	pp = pprint.PrettyPrinter(indent=4)
 
 	# first get ticker price and volatility data
@@ -197,5 +201,77 @@ def main():
 	comm_df['Returns'] = result['Portfolio Returns']
 	comm_df.to_csv('data/caihui/future/COMMODITIES_INDEX_MAIN_VOLUME')
 
+def merge_stocks():
+	"""
+	通过风险平价合成股票指数(ETF)
+	:return:
+	"""
+	pp = pprint.PrettyPrinter(indent=4)
+
+	# first get ticker price and volatility data
+	print ">> Getting ticker data..."
+
+	flag = 'etf'		# etf or index
+	if flag == 'etf':
+		TICKERS = {
+			"us": ['SPY', 'QQQ', 'IWM'],
+			"developed": ['ZWY00', 'ZCY00', 'ZSY00'],
+			"emerging": ['GCY00', 'SIY00', 'HGY00'],
+		}
+	else:
+		TICKERS = {
+			"us": [],
+			"energies": [],
+			"grains": [],
+		}
+
+	weights_by_asset_predefined = {
+		"us": 0.3,
+		"developed": 0.3,
+		"meats": 0.4
+	}
+
+	ticker_data = get_ticker_data(TICKERS)
+
+	ticker_volatilities = get_ticker_volatilities(ticker_data)
+
+	# then treat each group (like stocks) as its own portfolio and equalize volatility contributions
+	asset_class_weights = get_asset_class_weights(TICKERS, ticker_volatilities)
+	# asset_class_weights = get_asset_class_weights_avg(TICKERS)
+
+	# find individual asset weight by multiplying box_weights and environment_weights per my all weather configuration
+	risk_weight_dict = finalize_ticker_weights(TICKERS, asset_class_weights, weights_by_asset_predefined)
+	date = risk_weight_dict['Date']
+	del risk_weight_dict['Date']
+
+	# risk weight to value weight
+	ticker_data_pd = pd.DataFrame()
+	risk_weights = []
+	for key in ticker_data:
+		ticker_data_pd[key] = ticker_data[key]['Returns']
+		risk_weights.append(risk_weight_dict[key])
+	V = np.matrix(ticker_data_pd.dropna().corr())
+
+	weights = calcu_w(risk_weights, V, [0.1 for i in risk_weight_dict])
+	value_weight_dict = {}
+	for i, key in enumerate(ticker_data):
+		value_weight_dict[key] = weights[i]
+
+	print "\n>> Volatilities"
+	pp.pprint(ticker_volatilities)
+	print "\n>> Final risk weights"
+	pp.pprint(risk_weight_dict)
+	print "\n>> Final value weights"
+	pp.pprint(value_weight_dict)
+
+	result = backtesting.backtest(value_weight_dict, output='commodities') # yes, this is backtesting with weights we could have only known today, so it's not super rigorous
+	result['Portfolio Returns'] = result['Portfolio Returns'].fillna(0)
+	comm_df = pd.DataFrame()
+	comm_df['close'] = (result['Portfolio Returns'].cumsum() + 1) * 100
+	comm_df['Returns'] = result['Portfolio Returns']
+	comm_df.to_csv('data/caihui/future/COMMODITIES_INDEX_MAIN_VOLUME')
+
+
 if __name__ == "__main__":
-	main()
+	merge_commodities()
+	merge_stocks()
