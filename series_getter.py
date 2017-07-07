@@ -32,7 +32,6 @@ def main():
 						   "PL","PA","CT","OJ","KC","SB","CC","LS","SD"]
 	# COMMIDITIES_TICKERS = ['CL']
 	all_datas = []
-	dailyDate = 'None'
 	for ticker in COMMIDITIES_TICKERS:
 		try:
 			print ticker, 'get all data'
@@ -72,7 +71,7 @@ def main():
 			print ticker, ' error get all contract.'
 			raise
 	all_pd = pd.DataFrame(all_datas)
-	all_pd.to_csv('data/barchart/ALL_COMMODITIES_%s.csv' % dailyDate)
+	all_pd.to_csv('data/barchart/ALL_COMMODITIES_%s.csv' % datetime.datetime.now().strftime('%Y-%m-%d'))
 	print all_pd[['implied_roll_yeild', 'contractSymbol', 'main_volume', 'dailyVolume']]
 
 	
