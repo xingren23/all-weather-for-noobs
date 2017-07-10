@@ -10,6 +10,7 @@ PRICE_FIELD = 'close'
 QUOTE_URL = 'https://www.barchart.com/proxies/timeseries/queryeod.ashx?data=daily&maxrecords=10000&dividends=true&daystoexpiration=1'
 ROOT_URL = 'https://core-api.barchart.com/v1/quotes/get?fields=symbol%2CcontractSymbol%2CdailyLastPrice%2CdailyPriceChange%2CdailyOpenPrice%2CdailyHighPrice%2CdailyLowPrice%2CdailyPreviousPrice%2CdailyVolume%2CdailyOpenInterest%2CdailyDate1dAgo%2CsymbolCode%2CsymbolType%2ChasOptions&list=futures.contractInRoot&meta=field.shortName%2Cfield.type%2Cfield.description&hasOptions=true&page=1&limit=100&raw=1'
 DISCRIBUTION_URL = 'http://www.cefconnect.com/api/v3/distributionhistory/fund'
+HISTORY_URL = 'http://www.cefconnect.com/api/v3/pricinghistory/'
 def get_returns(ticker, start=datetime.datetime(1940, 1, 1), end=datetime.datetime.now(), period=1):
 	"""
 	加载行情
@@ -59,7 +60,7 @@ def get_distribution(ticker,start=datetime.datetime(1940, 1, 1), end=datetime.da
 	:param end:
 	:return:
 	"""
-	start = end - datetime.timedelta(days=365)
+	start = end - datetime.timedelta(days=365*15)
 	res = requests.get('%s/%s/%s/%s' % (DISCRIBUTION_URL, ticker, start.strftime('%m-%d-%Y'), end.strftime('%m-%d-%Y')))
 	if res.json().has_key('Success') and not res.json()['Success']:
 		start = datetime.datetime(end.year, 1, 1)
@@ -67,6 +68,17 @@ def get_distribution(ticker,start=datetime.datetime(1940, 1, 1), end=datetime.da
 		return res.json()
 	else:
 		return res.json()
+
+def get_history(ticker):
+	"""
+	获取指定时间内的分红数据
+	:param ticker:
+	:param start:
+	:param end:
+	:return:
+	"""
+	res = requests.get('%s/%s/All' % (HISTORY_URL, ticker))
+	return res.json()
 
 
 def get_annualized_volatility_of_series(series, window=DEFAULT_VOL_WINDOW):

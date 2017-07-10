@@ -8,31 +8,10 @@ from modules.all_weather_settings import OVERRIDE_TICKERS
 # Use this to get price data for any ticker from Yahoo! Finance
 # as such: python series_getter.py VTI
 
-def main():
-	start = datetime.datetime(1940, 1, 1)
-	end = datetime.datetime.now()
 
-	# tickers = sys.argv[1:] # command line arguments
-
-	# INDICES_TICKERS = ["$IUXX", "$SPX"]
-	# OVERRIDE_TICKERS.extend(INDICES_TICKERS)
-	# for ticker in OVERRIDE_TICKERS:
-	# 	try:
-	# 		tick_df = util.get_returns(ticker, start, end)
-	# 		print ticker, np.std(tick_df['Returns'])
-	# 		tick_df.to_csv("data/barchart/%s.csv" % ticker)
-	# 	except:
-	# 		print ticker, ' error get data.'
-
-	COMMIDITIES_TICKERS = ["DX","B6","D6","J6","S6","E6","A6","M6","N6","T6",
-						   "L6","R6","CL","HO","RB","NG","QA","ZK","ZB","UD",
-						   "ZN","TN","ZF","ZT","ZQ","GE","ZW","ZC","ZS","ZM",
-						   "ZL","ZO","ZR","KE","MW","RS","ES","NQ","YM","RJ",
-						   "EW","VI","GD","LE","GF","HE","DL","GC","SI","HG",
-						   "PL","PA","CT","OJ","KC","SB","CC","LS","SD"]
-	# COMMIDITIES_TICKERS = ['CL']
+def get_commodities(tickers):
 	all_datas = []
-	for ticker in COMMIDITIES_TICKERS:
+	for ticker in tickers:
 		try:
 			print ticker, 'get all data'
 			ticker_data = []
@@ -73,6 +52,31 @@ def main():
 	all_pd = pd.DataFrame(all_datas)
 	all_pd.to_csv('data/barchart/ALL_COMMODITIES_%s.csv' % datetime.datetime.now().strftime('%Y-%m-%d'))
 	print all_pd[['implied_roll_yeild', 'contractSymbol', 'main_volume', 'dailyVolume']]
+
+def main():
+	start = datetime.datetime(1940, 1, 1)
+	end = datetime.datetime.now()
+
+	# tickers = sys.argv[1:] # command line arguments
+
+	# INDICES_TICKERS = ["$IUXX", "$SPX"]
+	# OVERRIDE_TICKERS.extend(INDICES_TICKERS)
+	# for ticker in OVERRIDE_TICKERS:
+	# 	try:
+	# 		tick_df = util.get_returns(ticker, start, end)
+	# 		print ticker, np.std(tick_df['Returns'])
+	# 		tick_df.to_csv("data/barchart/%s.csv" % ticker)
+	# 	except:
+	# 		print ticker, ' error get data.'
+
+	COMMIDITIES_TICKERS = ["DX","B6","D6","J6","S6","E6","A6","M6","N6","T6",
+						   "L6","R6","CL","HO","RB","NG","QA","ZK","ZB","UD",
+						   "ZN","TN","ZF","ZT","ZQ","GE","ZW","ZC","ZS","ZM",
+						   "ZL","ZO","ZR","KE","MW","RS","ES","NQ","YM","RJ",
+						   "EW","VI","GD","LE","GF","HE","DL","GC","SI","HG",
+						   "PL","PA","CT","OJ","KC","SB","CC","LS","SD"]
+	# COMMIDITIES_TICKERS = ['CL']
+	get_commodities(COMMIDITIES_TICKERS)
 
 	
 if __name__ == "__main__":
