@@ -1,0 +1,194 @@
+,Ticker,Company,Country,Sector,Date,Weight
+0,AWF US,Alliancebernstein Global High,United States,,2017-06-30,5.31658
+1,FRA US,Blackrock Floating Rate Income,United States,,2017-06-30,1.81756
+2,PTY US,Pimco Corporate & Income Oppor,United States,,2017-06-30,2.79031
+3,EFR US,Eaton Vance Senior Floating-Ra,United States,,2017-06-30,1.85554
+4,EMD US,Western Asset Emerging Markets,United States,,2017-06-30,2.56156
+5,PFL US,Pimco Income Strategy Fund,United States,,2017-06-30,0.742169
+6,DHY US,Credit Suisse High Yield Bond,United States,,2017-06-30,0.813559
+7,CIK US,Credit Suisse Asset Management,United States,,2017-06-30,0.757848
+8,EAD US,Wells Fargo Advantage Income O,United States,,2017-06-30,2.88131
+9,HIX US,Western Asset High Income Fund,United States,,2017-06-30,2.67835
+10,VVR US,Invesco Senior Income Trust,United States,,2017-06-30,3.51592
+11,DHF US,Dreyfus High Yield Strategies,United States,,2017-06-30,0.855265
+12,MSD US,Morgan Stanley Emerging Market,United States,,2017-06-30,1.07867
+13,DSU US,Blackrock Debt Strategies Fund,United States,,2017-06-30,3.3317
+14,NSL US,Nuveen Senior Income Fund,United States,,2017-06-30,0.779438
+15,HYB US,New America High Income Fund I,United States,,2017-06-30,0.957403
+16,HYT US,Blackrock Corporate High Yield,United States,,2017-06-30,6.71688
+17,HIO US,Western Asset High Income Oppo,United States,,2017-06-30,3.15117
+18,TEI US,Templeton Emerging Markets Inc,United States,,2017-06-30,2.91902
+19,NHS US,Neuberger Berman High Yield St,United States,,2017-06-30,1.24741
+20,JFR US,Nuveen Floating Rate Income Fu,United States,,2017-06-30,1.91376
+21,FCT US,First Trust Senior Floating Ra,United States,,2017-06-30,1.2362
+22,EFT US,Eaton Vance Floating-Rate Inco,United States,,2017-06-30,2.04127
+23,JRO US,Nuveen Floating Rate Income Op,United States,,2017-06-30,1.33311
+24,BGT US,Blackrock Floating Rate Income,United States,,2017-06-30,0.984161
+25,PFN US,Pimco Income Strategy Fund Ii,United States,,2017-06-30,1.54416
+26,PHD US,Pioneer Floating Rate Trust,United States,,2017-06-30,1.02404
+27,HNW US,Pioneer Diversified High Incom,United States,,2017-06-30,0.589404
+28,FSD US,First Trust High Income Long/S,United States,,2017-06-30,2.56786
+29,HYI US,Western Asset High Yield Defin,United States,,2017-06-30,1.66411
+30,KIO US,Kkr Income Opportunities Fund,United States,,2017-06-30,1.1181
+31,DHG US,Deutsche High Income Opportuni,United States,,2017-06-30,0.76735
+32,EDI US,Stone Harbor Emerging Markets,United States,,2017-06-30,0.350074
+33,PHT US,Pioneer High Income Trust,United States,,2017-06-30,1.36732
+34,JHA US,Nuveen High Income December 20,United States,,2017-06-30,0.864729
+35,JSD US,Nuveen Short Duration Credit O,United States,,2017-06-30,0.523901
+36,JHY US,NUVEEN H-I 2020 TGT TRM FD,United States,,2017-06-30,0.372738
+37,BGX US,Blackstone/Gso Long-Short Cred,United States,,2017-06-30,0.87435
+38,EHT US,Eaton Vance High Income 2021,United States,,2017-06-30,0.735603
+39,PPR US,Voya Prime Rate Trust,United States,,2017-06-30,3.40475
+40,BGB US,Blackstone / Gso Strategic Cre,United States,,2017-06-30,3.04543
+41,GHY US,Prudential Global Short Durati,United States,,2017-06-30,2.96013
+42,BGH US,Barings Global Short Duration,United States,,2017-06-30,1.70252
+43,ISD US,Prudential Short Duration High,United States,,2017-06-30,2.4486
+44,EDF US,Stone Harbor Emerging Markets,United States,,2017-06-30,0.574229
+45,DSL US,Doubleline Income Solutions Fu,United States,,2017-06-30,8.02372
+46,IVH US,Ivy High Income Opportunities,United States,,2017-06-30,1.09431
+47,JHB US,Nuveen H-I Nov 21 Tgt Trm Fd,United States,,2017-06-30,1.66277
+48,RA US,Brookfield Real Assets Incom,United States,,2017-06-30,4.02008
+49,OPP US,Rivernrth/Doublelne Str Opp,United States,,2017-06-30,0.869866
+50,FIV US,FIRST TRUST SENIOR FLOATING,United States,,2017-06-30,1.04199
+51,JPT US,NUVEEN PREFERRED INCOME 2022,United States,,2017-06-30,0.511717
+0,JHA US,Nuveen High Income December 20,United States,,2017-03-31,0.929493
+1,PFN US,Pimco Income Strategy Fund Ii,United States,,2017-03-31,1.82933
+2,EFR US,Eaton Vance Senior Floating-Ra,United States,,2017-03-31,1.71298
+3,HYT US,Blackrock Corporate High Yield,United States,,2017-03-31,7.13082
+4,HIO US,Western Asset High Income Oppo,United States,,2017-03-31,3.36784
+5,RA US,Brookfield Real Assets Incom,United States,,2017-03-31,4.31608
+6,VVR US,Invesco Senior Income Trust,United States,,2017-03-31,3.05867
+7,DHF US,Dreyfus High Yield Strategies,United States,,2017-03-31,0.905763
+8,PHT US,Pioneer High Income Trust,United States,,2017-03-31,1.32276
+9,BGT US,Blackrock Floating Rate Income,United States,,2017-03-31,1.04632
+10,PPR US,Voya Prime Rate Trust,United States,,2017-03-31,2.94435
+11,DHY US,Credit Suisse High Yield Bond,United States,,2017-03-31,0.835374
+12,HYI US,Western Asset High Yield Defin,United States,,2017-03-31,1.80639
+13,EMD US,Western Asset Emerging Markets,United States,,2017-03-31,2.73052
+14,BGH US,Barings Global Short Duration,United States,,2017-03-31,1.83412
+15,DSL US,Doubleline Income Solutions Fu,United States,,2017-03-31,8.06327
+16,MSD US,Morgan Stanley Emerging Market,United States,,2017-03-31,1.1386
+17,AWF US,Alliancebernstein Global High,United States,,2017-03-31,5.11612
+18,PFL US,Pimco Income Strategy Fund,United States,,2017-03-31,0.875177
+19,BGB US,Blackstone / Gso Strategic Cre,United States,,2017-03-31,3.22923
+20,CIK US,Credit Suisse Asset Management,United States,,2017-03-31,0.790858
+21,EDI US,Stone Harbor Emerging Markets,United States,,2017-03-31,0.452972
+22,HNW US,Pioneer Diversified High Incom,United States,,2017-03-31,0.627545
+23,DHG US,Deutsche High Income Opportuni,United States,,2017-03-31,0.81193
+24,EDF US,Stone Harbor Emerging Markets,United States,,2017-03-31,0.6385
+25,KIO US,Kkr Income Opportunities Fund,United States,,2017-03-31,1.30264
+26,FRA US,Blackrock Floating Rate Income,United States,,2017-03-31,1.92816
+27,FCT US,First Trust Senior Floating Ra,United States,,2017-03-31,1.33261
+28,NSL US,Nuveen Senior Income Fund,United States,,2017-03-31,0.81536
+29,JHY US,NUVEEN H-I 2020 TGT TRM FD,United States,,2017-03-31,0.367547
+30,JHB US,Nuveen H-I Nov 21 Tgt Trm Fd,United States,,2017-03-31,1.72829
+31,PTY US,Pimco Corporate & Income Oppor,United States,,2017-03-31,2.78682
+32,NHS US,Neuberger Berman High Yield St,United States,,2017-03-31,1.21938
+33,JFR US,Nuveen Floating Rate Income Fu,United States,,2017-03-31,2.04029
+34,EHT US,Eaton Vance High Income 2021,United States,,2017-03-31,0.777257
+35,GHY US,Prudential Global Short Durati,United States,,2017-03-31,3.13984
+36,BGX US,Blackstone/Gso Long-Short Cred,United States,,2017-03-31,0.920527
+37,JRO US,Nuveen Floating Rate Income Op,United States,,2017-03-31,1.22666
+38,EFT US,Eaton Vance Floating-Rate Inco,United States,,2017-03-31,1.91463
+39,IVH US,Ivy High Income Opportunities,United States,,2017-03-31,1.16452
+40,PHD US,Pioneer Floating Rate Trust,United States,,2017-03-31,1.07882
+41,FSD US,First Trust High Income Long/S,United States,,2017-03-31,2.69171
+42,DSU US,Blackrock Debt Strategies Fund,United States,,2017-03-31,3.62792
+43,ISD US,Prudential Short Duration High,United States,,2017-03-31,2.36405
+44,HIX US,Western Asset High Income Fund,United States,,2017-03-31,2.82207
+45,EAD US,Wells Fargo Advantage Income O,United States,,2017-03-31,2.77898
+46,TEI US,Templeton Emerging Markets Inc,United States,,2017-03-31,2.86321
+47,JSD US,Nuveen Short Duration Credit O,United States,,2017-03-31,0.563351
+48,HYB US,New America High Income Fund I,United States,,2017-03-31,1.03036
+0,JFR US,Nuveen Floating Rate Income Fu,United States,,2016-12-30,2.11799
+1,HYT US,Blackrock Corporate High Yield,United States,,2016-12-30,7.42954
+2,EMD US,Western Asset Emerging Markets,United States,,2016-12-30,2.54119
+3,HIO US,Western Asset High Income Oppo,United States,,2016-12-30,3.50762
+4,PFN US,Pimco Income Strategy Fund Ii,United States,,2016-12-30,1.88936
+5,HYI US,Western Asset High Yield Defin,United States,,2016-12-30,1.67962
+6,FRA US,Blackrock Floating Rate Income,United States,,2016-12-30,2.53281
+7,PHD US,Pioneer Floating Rate Trust,United States,,2016-12-30,1.13235
+8,DHG US,Deutsche High Income Opportuni,United States,,2016-12-30,0.836422
+9,EAD US,Wells Fargo Advantage Income O,United States,,2016-12-30,3.20245
+10,PHT US,Pioneer High Income Trust,United States,,2016-12-30,0.981542
+11,IVH US,Ivy High Income Opportunities,United States,,2016-12-30,1.30638
+12,BGB US,Blackstone / Gso Strategic Cre,United States,,2016-12-30,3.72526
+13,GHY US,Prudential Global Short Durati,United States,,2016-12-30,3.30627
+14,PTY US,Pimco Corporate & Income Oppor,United States,,2016-12-30,2.75587
+15,TEI US,Templeton Emerging Markets Inc,United States,,2016-12-30,2.91552
+16,JRO US,Nuveen Floating Rate Income Op,United States,,2016-12-30,1.47648
+17,JHA US,Nuveen High Income December 20,United States,,2016-12-30,0.83405
+18,JHY US,NUVEEN H-I 2020 TGT TRM FD,United States,,2016-12-30,0.379647
+19,DHY US,Credit Suisse High Yield Bond,United States,,2016-12-30,1.0144
+20,JSD US,Nuveen Short Duration Credit O,United States,,2016-12-30,0.662331
+21,EFT US,Eaton Vance Floating-Rate Inco,United States,,2016-12-30,2.26642
+22,PFL US,Pimco Income Strategy Fund,United States,,2016-12-30,0.903302
+23,DSL US,Doubleline Income Solutions Fu,United States,,2016-12-30,8.09313
+24,FSD US,First Trust High Income Long/S,United States,,2016-12-30,3.03919
+25,EDI US,Stone Harbor Emerging Markets,United States,,2016-12-30,0.50968
+26,MSD US,Morgan Stanley Emerging Market,United States,,2016-12-30,1.1953
+27,AWF US,Alliancebernstein Global High,United States,,2016-12-30,5.25137
+28,EDF US,Stone Harbor Emerging Markets,United States,,2016-12-30,0.648188
+29,KIO US,Kkr Income Opportunities Fund,United States,,2016-12-30,1.33286
+30,PPR US,Voya Prime Rate Trust,United States,,2016-12-30,3.85534
+31,HNW US,Pioneer Diversified High Incom,United States,,2016-12-30,0.646511
+32,HIX US,Western Asset High Income Fund,United States,,2016-12-30,2.95228
+33,NHS US,Neuberger Berman High Yield St,United States,,2016-12-30,1.25785
+34,DHF US,Dreyfus High Yield Strategies,United States,,2016-12-30,0.941405
+35,ISD US,Prudential Short Duration High,United States,,2016-12-30,2.50829
+36,VVR US,Invesco Senior Income Trust,United States,,2016-12-30,3.99998
+37,BGT US,Blackrock Floating Rate Income,United States,,2016-12-30,1.253
+38,CIK US,Credit Suisse Asset Management,United States,,2016-12-30,0.811562
+39,EFR US,Eaton Vance Senior Floating-Ra,United States,,2016-12-30,2.04024
+40,BGX US,Blackstone/Gso Long-Short Cred,United States,,2016-12-30,1.08511
+41,FCT US,First Trust Senior Floating Ra,United States,,2016-12-30,1.40321
+42,NSL US,Nuveen Senior Income Fund,United States,,2016-12-30,0.988173
+43,HYB US,New America High Income Fund I,United States,,2016-12-30,1.04737
+44,DSU US,Blackrock Debt Strategies Fund,United States,,2016-12-30,3.84202
+45,BGH US,Barings Global Short Duration,United States,,2016-12-30,1.90114
+0,DHF US,DREYFUS HIGH YIELD STRATEGIES FUND,United States,HIGH YIELD,2016-09-30,0.784442
+1,ISD US,PRUDENTIAL SHORT DURATION HIGH,United States,HIGH YIELD,2016-09-30,2.43504
+2,PPR US,ING PRIME RATE CF,United States,HIGH YIELD,2016-09-30,3.97303
+3,ESD US,WESTERN ASST EMER MKT DEBT CF,United States,HIGH YIELD,2016-09-30,2.56318
+4,HYT US,BLACKROCK CORPORATE HIGH YIELD FUND INC,United States,HIGH YIELD,2016-09-30,6.38957
+5,VVR US,VAN KAMPEN SENIOR INCOME TRUST,United States,HIGH YIELD,2016-09-30,3.99008
+6,HIX US,WESTERN ASSET HIGH INCOME FUND II INC,United States,HIGH YIELD,2016-09-30,2.28959
+7,HYB US,NEW AMERICA HIGH INCOME FUND INC,United States,HIGH YIELD,2016-09-30,1.08695
+8,FCT US,FIRST TRUST SENIOR FLOATING RA,United States,HIGH YIELD,2016-09-30,1.32086
+9,EDF US,EDF,United States,HIGH YIELD,2016-09-30,0.664603
+10,PTY US,PIMCO CORPORATE & INCOME OPPORTUNITY FUND,United States,HIGH YIELD,2016-09-30,2.6053
+11,JSD US,NUVEEN SHORT DURATION CREDIT O,United States,HIGH YIELD,2016-09-30,0.766945
+12,EFT US,EATON VANCE FLOATING RATE INCOME TRUST,United States,HIGH YIELD,2016-09-30,2.55013
+13,AWF US,ALLIANCEBERNSTEIN GLBL HIGH INCM CF,United States,HIGH YIELD,2016-09-30,4.96279
+14,MSD US,MORGAN STANLEY EMRG MKT DEBT,United States,HIGH YIELD,2016-09-30,1.19603
+15,HHY US,BROOKFIELD HIGH INCOME FUND,United States,HIGH YIELD,2016-09-30,0.968886
+16,HYI US,WESTERN ASSET HIGH YIELD DEFINED OPPORTUNITY FUND INC,United States,HIGH YIELD,2016-09-30,1.63223
+17,DSL US,DOUBLELINE INCOME SOLUTIONS FUND,United States,HIGH YIELD,2016-09-30,8.01978
+18,EDI US,STONE HARBOR EMERGING MARKETS TOTAL INCOME FUND,United States,HIGH YIELD,2016-09-30,0.647708
+19,EAD US,AIRBUS GROUP NV,United States,HIGH YIELD,2016-09-30,2.77348
+20,KIO US,KUMBA IRON ORE,United States,HIGH YIELD,2016-09-30,1.26348
+21,PHT US,PIONEER HIGH INCOME TRUST,United States,HIGH YIELD,2016-09-30,0.822404
+22,BGT US,BLACKROCK FLOATING RATE INM CF,United States,HIGH YIELD,2016-09-30,1.47253
+23,GHY US,PRUDENTIAL GLOBAL SHORT DURATI,United States,HIGH YIELD,2016-09-30,2.91961
+24,EMD US,WESTERN ASSET EMERGING MARKETS INCOME FUND INC,United States,HIGH YIELD,2016-09-30,1.85806
+25,PFN US,PIMCO FLOATING RATE STRATEGY FUND,United States,HIGH YIELD,2016-09-30,1.7572
+26,JRO US,NUVEEN FLOATING RATE INCOME OP,United States,HIGH YIELD,2016-09-30,1.91507
+27,PFL US,PIMCO INCOME STRATEGY FUND,United States,HIGH YIELD,2016-09-30,0.84728
+28,IVH US,IVY HIGH INCOME OPPORTUNITIES FUND,United States,HIGH YIELD,2016-09-30,1.22219
+29,NSL US,NUVEEN SENIOR INCOME FUND,United States,HIGH YIELD,2016-09-30,1.16371
+30,CIK US,CREDIT SUISSE ASSET MANAGMNT INCM CF,United States,HIGH YIELD,2016-09-30,0.836492
+31,JFR US,NUVEEN FLOATING RATE INCOME FU,United States,HIGH YIELD,2016-09-30,2.70972
+32,NHS US,NEUBERGER BERMAN HIGH YIELD STRATEGIES FUND,United States,HIGH YIELD,2016-09-30,1.31401
+33,FSD US,FIRST TRUST HIGH INCOME LONG/SHORT FUND,United States,HIGH YIELD,2016-09-30,3.1308
+34,SBW US,WESTERN ASSET WORLDWIDE INCOME FUND INC,United States,HIGH YIELD,2016-09-30,0.859207
+35,DHY US,CREDIT SUISSE HIGH YIELD BOND FUND,United States,HIGH YIELD,2016-09-30,0.695934
+36,HIO US,WESTERN ASSET HIGH INCOME OPPORTUNITY FUND INC,United States,HIGH YIELD,2016-09-30,3.35637
+37,PHD US,PIONEER FLOATING RATE TRUST,United States,HIGH YIELD,2016-09-30,1.36023
+38,EFR US,EATON VANCE SENIOR FLOATING RATE TRUST,United States,HIGH YIELD,2016-09-30,2.3477
+39,DSU US,BLACKROCK DEBT STRATEGIES FUND INC,United States,HIGH YIELD,2016-09-30,3.5389
+40,TEI US,TEMPLETON EMERGING MARKETS INCOME FUND,United States,HIGH YIELD,2016-09-30,2.71562
+41,BGB US,BLACKSTONE / GSO STRATEGIC CREDIT FUND,United States,HIGH YIELD,2016-09-30,3.50257
+42,FRA US,FRAPORT AG FRANKFURT AIRPORT SERVICES WORLDWIDE,United States,HIGH YIELD,2016-09-30,2.38248
+43,HNW US,PIONEER DIVERSIFIED HIGH INCOME TRUST,United States,HIGH YIELD,2016-09-30,0.502918
+44,DHG US,DEUTSCHE HIGH INCOME OPPORTUNITIES FUND INC,United States,HIGH YIELD,2016-09-30,0.972804
+45,JHA US,NUVEEN HIGH INCOME DECEMBER 2018 TARGET TERM FUND,United States,HIGH YIELD,2016-09-30,0.811343

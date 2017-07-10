@@ -1,0 +1,141 @@
+,Ticker,Company,Country,Sector,Date,Weight
+0,BME US,Blackrock Health Sciences Trust,United States,,2017-06-30,0.973778
+1,ETB US,Eaton Vance Tax-Managed Buy-Write Income Fund,United States,,2017-06-30,1.20926
+2,BOE US,Blackrock Global Opportunities Equity Trust,United States,,2017-06-30,5.11303
+3,ETV US,Eaton Vance Tax-Managed Buy-Write Opportunities Fund,United States,,2017-06-30,2.79654
+4,BDJ US,Blackrock Enhanced Equity Dividend Trust,United States,,2017-06-30,8.09011
+5,GPM US,Guggenheim Enhanced Equity Income Fund,United States,,2017-06-30,1.97024
+6,ETW US,Eaton Vance Tax Managed Global Buy Write Opportunities Fund,United States,,2017-06-30,4.07512
+7,IGA US,Voya Global Advantage And Premium Opportunity Fund,United States,,2017-06-30,1.12414
+8,SPXX US,Nuveen S&P 500 Dynamic Overwrite Fund,United States,,2017-06-30,0.973294
+9,IRR US,Voya Natural Resources Equity Income Fund,United States,,2017-06-30,0.544035
+10,ETY US,Eaton Vance Tax-Managed Diversified Equity Income Fund,United States,,2017-06-30,6.63878
+11,QQQX US,Nuveen Nasdaq 100 Dynamic Overwrite Fund,United States,,2017-06-30,2.35152
+12,EXG US,Eaton Vance Tax-Managed Global Diversified Equity Income Fund,United States,,2017-06-30,7.98561
+13,IAE US,Voya Asia Pacific High Dividend Equity Income Fund,United States,,2017-06-30,0.773208
+14,BGY US,Blackrock International Growth And Income Trust,United States,,2017-06-30,3.78488
+15,ETJ US,Eaton Vance Risk-Managed Diversified Equity Income Fund,United States,,2017-06-30,3.2787
+16,IDE US,Voya Infrastructure Industrials And Materials Fund,United States,,2017-06-30,1.48439
+17,EXD US,Eaton Vance Tax-Advantaged Bond And Options Strategies Fund,United States,,2017-06-30,0.671312
+18,STK US,Columbia Seligman Premium Technology Growth Fund Inc,United States,,2017-06-30,0.961317
+19,INB US,Cohen & Steers Global Income Builder Inc,United States,,2017-06-30,1.24834
+20,HEQ US,John Hancock Hedged Equity & Income Fund,United States,,2017-06-30,0.923181
+21,GNT US,Gamco Natural Resources Gold & Income Trust,United States,,2017-06-30,0.572752
+22,BCX US,Blackrock Resources & Commodities Strategy Trust,United States,,2017-06-30,5.03029
+23,BST US,Blackrock Science & Technology Trust,United States,,2017-06-30,2.73103
+24,DIAX US,Nuveen Dow 30Sm Dynamic Overwrite Fund,United States,,2017-06-30,2.97766
+25,FDEU US,First Trust Dynamic Europe Equ,United States,,2017-06-30,1.55137
+26,CII US,Blackrock Enhanced Capital And Income Fund Inc,United States,,2017-06-30,3.61514
+27,MCN US,Madison Covered Call & Equity Strategy Fund,United States,,2017-06-30,0.746045
+28,FFA US,First Trust Enhanced Equity Income Fund,United States,,2017-06-30,1.6391
+29,EOI US,Eaton Vance Enhanced Equity Income Fund,United States,,2017-06-30,2.66436
+30,BXMX US,Nuveen S&P 500 Buy-Write Income Fund,United States,,2017-06-30,4.9005
+31,BGR US,Blackrock Energy And Resources Trust,United States,,2017-06-30,2.19059
+32,EOS US,Eaton Vance Enhanced Equity Income Fund Ii,United States,,2017-06-30,3.34433
+33,NFJ US,Allianzgi Nfj Dividend Interest & Premium Strategy Fund,United States,,2017-06-30,7.01289
+34,IGD US,Voya Global Equity Dividend And Premium Opportunity Fund,United States,,2017-06-30,4.05315
+0,BDJ US,Blackrock Enhanced Equity Dividend Trust,United States,,2017-03-31,8.05669
+1,SPXX US,Nuveen S&P 500 Dynamic Overwrite Fund,United States,,2017-03-31,0.911239
+2,ETW US,Eaton Vance Tax Managed Global Buy Write Opportunities Fund,United States,,2017-03-31,4.40338
+3,EXG US,Eaton Vance Tax-Managed Global Diversified Equity Income Fund,United States,,2017-03-31,7.94391
+4,BME US,Blackrock Health Sciences Trust,United States,,2017-03-31,0.858543
+5,CII US,Blackrock Enhanced Capital And Income Fund Inc,United States,,2017-03-31,3.44469
+6,EOS US,Eaton Vance Enhanced Equity Income Fund Ii,United States,,2017-03-31,3.15711
+7,BST US,Blackrock Science & Technology Trust,United States,,2017-03-31,2.62486
+8,STK US,Columbia Seligman Premium Technology Growth Fund Inc,United States,,2017-03-31,0.870546
+9,IGA US,Voya Global Advantage And Premium Opportunity Fund,United States,,2017-03-31,1.16154
+10,ETB US,Eaton Vance Tax-Managed Buy-Write Income Fund,United States,,2017-03-31,1.1156
+11,INB US,Cohen & Steers Global Income Builder Inc,United States,,2017-03-31,1.17096
+12,IRR US,Voya Natural Resources Equity Income Fund,United States,,2017-03-31,0.80537
+13,BCX US,Blackrock Resources & Commodities Strategy Trust,United States,,2017-03-31,5.37045
+14,GPM US,Guggenheim Enhanced Equity Income Fund,United States,,2017-03-31,0.604466
+15,IGD US,Voya Global Equity Dividend And Premium Opportunity Fund,United States,,2017-03-31,3.95378
+16,BOE US,Blackrock Global Opportunities Equity Trust,United States,,2017-03-31,5.23344
+17,ETV US,Eaton Vance Tax-Managed Buy-Write Opportunities Fund,United States,,2017-03-31,2.63334
+18,FFA US,First Trust Enhanced Equity Income Fund,United States,,2017-03-31,1.60084
+19,DIAX US,Nuveen Dow 30Sm Dynamic Overwrite Fund,United States,,2017-03-31,2.74107
+20,FDEU US,First Trust Dynamic Europe Equ,United States,,2017-03-31,1.60295
+21,QQQX US,Nuveen Nasdaq 100 Dynamic Overwrite Fund,United States,,2017-03-31,2.44113
+22,NFJ US,Allianzgi Nfj Dividend Interest & Premium Strategy Fund,United States,,2017-03-31,7.44492
+23,BGY US,Blackrock International Growth And Income Trust,United States,,2017-03-31,3.8621
+24,ETJ US,Eaton Vance Risk-Managed Diversified Equity Income Fund,United States,,2017-03-31,2.87147
+25,HEQ US,John Hancock Hedged Equity & Income Fund,United States,,2017-03-31,0.881384
+26,IDE US,Voya Infrastructure Industrials And Materials Fund,United States,,2017-03-31,1.581
+27,BGR US,Blackrock Energy And Resources Trust,United States,,2017-03-31,2.28043
+28,ETY US,Eaton Vance Tax-Managed Diversified Equity Income Fund,United States,,2017-03-31,7.90052
+29,GNT US,Gamco Natural Resources Gold & Income Trust,United States,,2017-03-31,0.569364
+30,EXD US,Eaton Vance Tax-Advantaged Bond And Options Strategies Fund,United States,,2017-03-31,0.596409
+31,IAE US,Voya Asia Pacific High Dividend Equity Income Fund,United States,,2017-03-31,0.749067
+32,MCN US,Madison Covered Call & Equity Strategy Fund,United States,,2017-03-31,0.744668
+33,BXMX US,Nuveen S&P 500 Buy-Write Income Fund,United States,,2017-03-31,5.27171
+34,EOI US,Eaton Vance Enhanced Equity Income Fund,United States,,2017-03-31,2.54105
+0,BST US,Blackrock Science & Technology Trust,United States,,2016-12-30,2.17671
+1,ETB US,Eaton Vance Tax-Managed Buy-Write Income Fund,United States,,2016-12-30,1.15542
+2,BCX US,Blackrock Resources & Commodities Strategy Trust,United States,,2016-12-30,5.51898
+3,GPM US,Guggenheim Enhanced Equity Income Fund,United States,,2016-12-30,0.644724
+4,HEQ US,John Hancock Hedged Equity & Income Fund,United States,,2016-12-30,0.892852
+5,DIAX US,Nuveen Dow 30Sm Dynamic Overwrite Fund,United States,,2016-12-30,2.91023
+6,STK US,Columbia Seligman Premium Technology Growth Fund Inc,United States,,2016-12-30,0.860959
+7,MCN US,Madison Covered Call & Equity Strategy Fund,United States,,2016-12-30,0.780806
+8,EOS US,Eaton Vance Enhanced Equity Income Fund Ii,United States,,2016-12-30,2.55515
+9,QQQX US,Nuveen Nasdaq 100 Dynamic Overwrite Fund,United States,,2016-12-30,2.85333
+10,ETY US,Eaton Vance Tax-Managed Diversified Equity Income Fund,United States,,2016-12-30,7.97239
+11,GNT US,Gamco Natural Resources Gold & Income Trust,United States,,2016-12-30,0.454985
+12,BGR US,Blackrock Energy And Resources Trust,United States,,2016-12-30,2.33746
+13,IGD US,Voya Global Equity Dividend And Premium Opportunity Fund,United States,,2016-12-30,3.96391
+14,BDJ US,Blackrock Enhanced Equity Dividend Trust,United States,,2016-12-30,8.09015
+15,IDE US,Voya Infrastructure Industrials And Materials Fund,United States,,2016-12-30,1.45917
+16,BXMX US,Nuveen S&P 500 Buy-Write Income Fund,United States,,2016-12-30,5.57442
+17,IGA US,Voya Global Advantage And Premium Opportunity Fund,United States,,2016-12-30,1.08674
+18,EXG US,Eaton Vance Tax-Managed Global Diversified Equity Income Fund,United States,,2016-12-30,7.86449
+19,IAE US,Voya Asia Pacific High Dividend Equity Income Fund,United States,,2016-12-30,0.645348
+20,INB US,Cohen & Steers Global Income Builder Inc,United States,,2016-12-30,1.18273
+21,ETV US,Eaton Vance Tax-Managed Buy-Write Opportunities Fund,United States,,2016-12-30,2.73702
+22,EXD US,Eaton Vance Tax-Advantaged Bond And Options Strategies Fund,United States,,2016-12-30,0.640325
+23,BGY US,Blackrock International Growth And Income Trust,United States,,2016-12-30,3.65801
+24,ETW US,Eaton Vance Tax Managed Global Buy Write Opportunities Fund,United States,,2016-12-30,3.95884
+25,IRR US,Voya Natural Resources Equity Income Fund,United States,,2016-12-30,0.618685
+26,FDEU US,First Trust Dynamic Europe Equ,United States,,2016-12-30,1.6376
+27,BOE US,Blackrock Global Opportunities Equity Trust,United States,,2016-12-30,5.33522
+28,FFA US,First Trust Enhanced Equity Income Fund,United States,,2016-12-30,1.61357
+29,NFJ US,Allianzgi Nfj Dividend Interest & Premium Strategy Fund,United States,,2016-12-30,7.91699
+30,EOI US,Eaton Vance Enhanced Equity Income Fund,United States,,2016-12-30,2.58582
+31,BME US,Blackrock Health Sciences Trust,United States,,2016-12-30,0.816485
+32,CII US,Blackrock Enhanced Capital And Income Fund Inc,United States,,2016-12-30,3.25319
+33,ETJ US,Eaton Vance Risk-Managed Diversified Equity Income Fund,United States,,2016-12-30,3.0426
+34,SPXX US,Nuveen S&P 500 Dynamic Overwrite Fund,United States,,2016-12-30,1.2047
+0,ETV US,EATON VANCE TAX MANAGED BUYWRITE OPPORTUNITES FUND,United States,US OPTION INCOME,2016-09-30,2.77595
+1,BGR US,BLACKROCK ENERGY AND RES CF,United States,GLOBAL OPTION INCOME,2016-09-30,2.20081
+2,FFA US,FIRST TRUST ENHANCED EQUITY INCOME FUND,United States,US OPTION INCOME,2016-09-30,1.53976
+3,IRR US,VOYA NATURAL RESOURCES EQUITY INCOME FUND,United States,US OPTION INCOME,2016-09-30,0.878092
+4,EXG US,EATON VANCE TAX-MANAGED GLOBAL DIVERSIFIED EQUITY INCOME FUND,United States,GLOBAL OPTION INCOME,2016-09-30,7.88716
+5,STK US,COLUMBIA SELIGMAN PREMIUM TECHNOLOGY GROWTH FUND INC,United States,GLOBAL OPTION INCOME,2016-09-30,0.830769
+6,GPM US,GUGGENHEIM ENHANCED EQUITY INCOME FUND,United States,US OPTION INCOME,2016-09-30,0.60624
+7,IGD US,VOYA GLOBAL EQY DIVIDEND PREMIUM OPPORTUNITY FUND,United States,GLOBAL OPTION INCOME,2016-09-30,4.06046
+8,CII US,BLACKROCK ENHANCED CAPITAL AND INCOME FUND INC,United States,US OPTION INCOME,2016-09-30,2.5275
+9,EOI US,EATON VANCE ENHANCED EQTY INCOME CF,United States,US OPTION INCOME,2016-09-30,2.09274
+10,BXMX US,NUVEEN EQUITY PREMIUM INCOME FUND,United States,US OPTION INCOME,2016-09-30,4.9196
+11,ETB US,EATON VANCE TAX-MANAGED BUY-WRITE INCOME FUND,United States,US OPTION INCOME,2016-09-30,1.16701
+12,EXD US,EATON VANCE TAX-ADVANTAGED BOND AND OPTION STRATEGIES FUND,United States,US OPTION INCOME,2016-09-30,0.676629
+13,DIAX US,NUVEEN DOW 30SM DYNAMIC OVERWRIT ETF,United States,US OPTION INCOME,2016-09-30,2.71538
+14,BOE US,BLACKROCK GLOBAL OPPORTUNITIES EQUITY TRUST,United States,GLOBAL OPTION INCOME,2016-09-30,5.50622
+15,SPXX US,NUVEEN EQUITY PREMIUM GROWTH CF,United States,US OPTION INCOME,2016-09-30,1.15311
+16,BST US,BLACKROCK SCIENCE AND TECHNOLOGY TRUST,United States,US OPTION INCOME,2016-09-30,2.48192
+17,GNT US,GAMCO NATURAL RESOURCES GOLD AND INCOME TRUST,United States,US OPTION INCOME,2016-09-30,0.508003
+18,ETJ US,EATON VANCE RISK-MANAGED DIVERSIFIED EQUITY INCOME FUND,United States,US OPTION INCOME,2016-09-30,3.06671
+19,ETY US,EATON VANCE TAX-MANAGED DIVERSIFIED EQUITY INCOME FUND,United States,GLOBAL OPTION INCOME,2016-09-30,7.81053
+20,MCN US,MADISON COVERED CALL & EQUITY STRATEGY FUND,United States,US OPTION INCOME,2016-09-30,0.871525
+21,IAE US,VOYA ASIA PACIFIC HIGH DIVIDEND EQUITY INCOME FUND,United States,INTERNATIONAL OPTION INCOME,2016-09-30,0.802316
+22,BCX US,BCX,United States,US OPTION INCOME,2016-09-30,5.41098
+23,IGA US,VOYA GLOBAL ADVANTAGE AND PREMIUM OPPORTUNITY FUND,United States,GLOBAL OPTION INCOME,2016-09-30,1.08814
+24,HEQ US,JOHN HANCOCK HEDGED EQUITY & INCOME FUND,United States,US OPTION INCOME,2016-09-30,1.22631
+25,FDEU US,FIRST TRUST DYNAMIC EUROPE EQUITY INCOME FUND,United States,US OPTION INCOME,2016-09-30,1.57945
+26,NFJ US,NFJ DIV INTEREST & PREM STRATEGY CF,United States,US OPTION INCOME,2016-09-30,7.73778
+27,ETW US,EATON VANCE TAX MANAGED GLOBAL CF,United States,GLOBAL OPTION INCOME,2016-09-30,4.11836
+28,INB US,COHEN & STEERS GLOBAL INCOME BUILDER INC,United States,US OPTION INCOME,2016-09-30,1.20616
+29,BDJ US,BLACKROCK ENHANCED DIV ACHIEVERS CF,United States,US OPTION INCOME,2016-09-30,7.96591
+30,IDE US,VOYA INFRASTRUCTURE INDUSTRIALS AND MATERIALS FUND,United States,GLOBAL OPTION INCOME,2016-09-30,1.67615
+31,BME US,BLACKROCK HEALTH SCIENCE TRUST,United States,GLOBAL OPTION INCOME,2016-09-30,0.871796
+32,EOS US,EATON VANCE ENHANCED EQTY INCM II CF,United States,US OPTION INCOME,2016-09-30,3.26611
+33,BGY US,BLACKROCK INTERN GRTH & INC CF,United States,INTERNATIONAL OPTION INCOME,2016-09-30,3.88734
+34,QQQX US,NASDAQ PREMIUM INCOME AND GROWTH CF,United States,US OPTION INCOME,2016-09-30,2.88708
