@@ -31,7 +31,7 @@ def download_all_quarter_snapshots():
         quarter_df = pd.DataFrame.from_records(arrays)
         quarter_df.columns = ['Ticker','Company','Country','Sector','Date','Weight']
         result_df = result_df.append(quarter_df.dropna())
-    result_df.to_csv('data/barchart/cef/CEFX_QUARTER_SNAPSHOT.csv')
+    result_df.to_csv('data/cef/CEFX_QUARTER_SNAPSHOT.csv')
 
 if __name__ == "__main__":
     download_all_quarter_snapshots()
