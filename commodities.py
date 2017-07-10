@@ -264,7 +264,7 @@ def merge_stocks():
 	print "\n>> Final value weights"
 	pp.pprint(value_weight_dict)
 
-	result = backtesting.backtest(value_weight_dict, output='commodities') # yes, this is backtesting with weights we could have only known today, so it's not super rigorous
+	result = backtesting.backtest(value_weight_dict, output='commodities_results') # yes, this is backtesting with weights we could have only known today, so it's not super rigorous
 	result['Portfolio Returns'] = result['Portfolio Returns'].fillna(0)
 	comm_df = pd.DataFrame()
 	comm_df['close'] = (result['Portfolio Returns'].cumsum() + 1) * 100

@@ -269,7 +269,7 @@ def main():
 	pp.pprint(value_weight_dict)
 
 	update_weight_file(value_weight_dict)
-	result = backtesting.backtest(value_weight_dict, output='all_weather') # yes, this is backtesting with weights we could have only known today, so it's not super rigorous
+	result = backtesting.backtest(value_weight_dict, output='all_weather_results') # yes, this is backtesting with weights we could have only known today, so it's not super rigorous
 
 
 if __name__ == "__main__":
