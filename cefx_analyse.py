@@ -3,7 +3,6 @@
 
 import pandas as pd
 import os
-import numpy as np
 from datetime import datetime
 
 DATA_PATH = 'data/cef'
@@ -37,9 +36,9 @@ def cefx_merge(index, all_cefs_pd):
         if date in day_groups.groups.keys():
             day_pd = day_groups.get_group(date)
 
-            discount_value = cal_row_value(row, day_pd, 'discount')
-            preminum_value = cal_row_value(row, day_pd, 'preminum')
-            row_value = cal_row_value(row, day_pd, '')
+            discount_value = cal_row_value(date, row, day_pd, 'discount')
+            preminum_value = cal_row_value(date, row, day_pd, 'preminum')
+            row_value = cal_row_value(date, row, day_pd, '')
             print date, row_value, discount_value, preminum_value
             returns.append({'date': date, 'value': row_value, 'preminum_value': preminum_value, 'discount_value':discount_value})
 
@@ -47,7 +46,7 @@ def cefx_merge(index, all_cefs_pd):
     returns_pd.to_csv('%s/%s_MERGED_RETURNS.csv' % (DATA_PATH, index))
 
 
-def cal_row_value(row, day_pd, sort):
+def cal_row_value(date, row, day_pd, sort):
     if sort == 'discount':
         day_pd.sort_values(by='DiscountData',ascending=True, inplace=True)
         day_pd = day_pd.head(int(0.3*len(day_pd)))
@@ -62,6 +61,9 @@ def cal_row_value(row, day_pd, sort):
     row_weight = 0.001
     for symbol, weight in row.iteritems():
         if symbol in day_pd.index:
+            if date == '2016-11-18' and symbol == 'DSU':
+                continue
+            #     print sort, symbol, weight, day_pd.ix[symbol]['Percent']
             row_value += weight * day_pd.ix[symbol]['Percent']
             row_weight += weight
 
@@ -81,6 +83,7 @@ def merge_all():
         all_cefs_pd = all_cefs_pd.append(data[['DataDateJs', 'TICKER', 'Percent', 'DiscountData']]).fillna(0)
 
     indexes = [ 'CEFIGX', 'CEFOIX','CEFHYX', 'CEFBLX', 'CEFX']
+    # indexes = ['CEFHYX']
     for index in indexes:
         cefx_merge(index, all_cefs_pd)
         # break
