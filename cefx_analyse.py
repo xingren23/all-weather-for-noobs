@@ -29,19 +29,25 @@ def cefx_merge(index, all_cefs_pd):
     cefx_pd = cefx_pd.fillna(0)
     # print cefx_pd
 
+    print index, 'merge index returns.'
     day_groups = all_cefs_pd.groupby('DataDateJs')
     returns = []
     for time,row in cefx_pd.T.iteritems():
         date = time.strftime('%Y-%m-%d')
         if date in day_groups.groups.keys():
             day_pd = day_groups.get_group(date)
+            day_pd.sort_values(by='DiscountData', inplace=True)
             day_pd.index = day_pd['TICKER']
+            day_pd = day_pd.head(int(0.3*len(day_pd)))
             # print day_pd
             row_value = 0.0
+            row_weight = 0.0
             for symbol, weight in row.iteritems():
                 if symbol in day_pd.index:
                     row_value += weight * day_pd.ix[symbol]['Percent']
+                    row_weight += weight
 
+            row_value *= 1.0 / row_weight
             print date, row_value
             returns.append({'date': date, 'value': row_value})
 
@@ -58,11 +64,10 @@ def merge_all():
         data['Percent'] = data['Data'].pct_change()
         if item_file == 'ZF_HISTORY.csv':
             continue
-        all_cefs_pd = all_cefs_pd.append(data[['DataDateJs', 'TICKER', 'Percent']]).fillna(0)
+        all_cefs_pd = all_cefs_pd.append(data[['DataDateJs', 'TICKER', 'Percent', 'DiscountData']]).fillna(0)
 
     indexes = [ 'CEFIGX', 'CEFOIX','CEFHYX', 'CEFBLX', 'CEFX']
     for index in indexes:
-        print index, 'merge index returns.'
         cefx_merge(index, all_cefs_pd)
         # break
 
