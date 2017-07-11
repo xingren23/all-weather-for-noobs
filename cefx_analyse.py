@@ -36,23 +36,37 @@ def cefx_merge(index, all_cefs_pd):
         date = time.strftime('%Y-%m-%d')
         if date in day_groups.groups.keys():
             day_pd = day_groups.get_group(date)
-            day_pd.sort_values(by='DiscountData', inplace=True)
-            day_pd.index = day_pd['TICKER']
-            day_pd = day_pd.head(int(0.3*len(day_pd)))
-            # print day_pd
-            row_value = 0.0
-            row_weight = 0.0
-            for symbol, weight in row.iteritems():
-                if symbol in day_pd.index:
-                    row_value += weight * day_pd.ix[symbol]['Percent']
-                    row_weight += weight
 
-            row_value *= 1.0 / row_weight
-            print date, row_value
-            returns.append({'date': date, 'value': row_value})
+            discount_value = cal_row_value(row, day_pd, 'discount')
+            preminum_value = cal_row_value(row, day_pd, 'preminum')
+            row_value = cal_row_value(row, day_pd, '')
+            print date, row_value, discount_value, preminum_value
+            returns.append({'date': date, 'value': row_value, 'preminum_value': preminum_value, 'discount_value':discount_value})
 
     returns_pd = pd.DataFrame(returns)
     returns_pd.to_csv('%s/%s_MERGED_RETURNS.csv' % (DATA_PATH, index))
+
+
+def cal_row_value(row, day_pd, sort):
+    if sort == 'discount':
+        day_pd.sort_values(by='DiscountData',ascending=True, inplace=True)
+        day_pd = day_pd.head(int(0.3*len(day_pd)))
+    elif sort == 'preminum':
+        day_pd.sort_values(by='DiscountData',ascending=False, inplace=True)
+        day_pd = day_pd.head(int(0.3*len(day_pd)))
+
+    day_pd.index = day_pd['TICKER']
+
+    # print day_pd
+    row_value = 0.0
+    row_weight = 0.001
+    for symbol, weight in row.iteritems():
+        if symbol in day_pd.index:
+            row_value += weight * day_pd.ix[symbol]['Percent']
+            row_weight += weight
+
+    row_value *= 1.0 / row_weight
+    return row_value
 
 
 def merge_all():
