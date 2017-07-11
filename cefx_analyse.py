@@ -36,11 +36,14 @@ def cefx_merge(index, all_cefs_pd):
         if date in day_groups.groups.keys():
             day_pd = day_groups.get_group(date)
 
-            discount_value = cal_row_value(date, row, day_pd, 'discount')
-            preminum_value = cal_row_value(date, row, day_pd, 'preminum')
-            row_value = cal_row_value(date, row, day_pd, '')
+            discount_value, full_discount_value = cal_row_value(date, row, day_pd, 'discount')
+            preminum_value, full_preminum_value = cal_row_value(date, row, day_pd, 'preminum')
+            row_value, full_value = cal_row_value(date, row, day_pd, '')
             print date, row_value, discount_value, preminum_value
-            returns.append({'date': date, 'value': row_value, 'preminum_value': preminum_value, 'discount_value':discount_value})
+            returns.append({'date': date,
+                            'value': row_value, 'full_value': full_value,
+                            'preminum_value': preminum_value, 'full_preminum_value': full_preminum_value,
+                            'discount_value':discount_value, 'full_discount_value':full_discount_value})
 
     returns_pd = pd.DataFrame(returns)
     returns_pd.to_csv('%s/%s_MERGED_RETURNS.csv' % (DATA_PATH, index))
@@ -58,6 +61,7 @@ def cal_row_value(date, row, day_pd, sort):
 
     # print day_pd
     row_value = 0.0
+    full_value = 0.0
     row_weight = 0.001
     for symbol, weight in row.iteritems():
         if symbol in day_pd.index:
@@ -65,28 +69,38 @@ def cal_row_value(date, row, day_pd, sort):
                 continue
             #     print sort, symbol, weight, day_pd.ix[symbol]['Percent']
             row_value += weight * day_pd.ix[symbol]['Percent']
+            full_value += weight * day_pd.ix[symbol]['Percent']
             row_weight += weight
 
     row_value *= 1.0 / row_weight
-    return row_value
+    full_value *= 1.0 / row_weight
+    return row_value, full_value
 
 
 def merge_all():
     # load cefs history data
     all_cefs_pd = pd.DataFrame()
-    all_files = [item for item in os.listdir(DATA_PATH) if item.endswith('_HISTORY.csv')]
+    all_files = [item for item in os.listdir(DATA_PATH) if item.endswith('_YAHOO_HISTORY.csv')]
     for item_file in all_files:
-        data = pd.read_csv('%s/%s' % (DATA_PATH, item_file))
-        data['Percent'] = data['Data'].pct_change()
-        if item_file == 'ZF_HISTORY.csv':
-            continue
-        all_cefs_pd = all_cefs_pd.append(data[['DataDateJs', 'TICKER', 'Percent', 'DiscountData']]).fillna(0)
-        break
 
-    # indexes = [ 'CEFIGX', 'CEFOIX','CEFHYX', 'CEFBLX', 'CEFX']
+        symbol = item_file[:item_file.find("_")]
+        data = pd.read_csv('%s/%s_HISTORY.csv' % (DATA_PATH, symbol))
+        data.index = data['DataDateJs']
+        yahoo_data = pd.read_csv('%s/%s_YAHOO_HISTORY.csv' % (DATA_PATH, symbol), index_col = 'Date')
+        yahoo_data = yahoo_data.ix[data.index]
+        data['Adj_Percent'] = yahoo_data['Adj Close'].astype(float).pct_change() * 100
+        data['Percent'] = yahoo_data['Close'].astype(float).pct_change() * 100
+
+        if symbol == 'BGX':
+            continue
+        data = data.reset_index(drop=True)
+        all_cefs_pd = all_cefs_pd.append(data[['DataDateJs', 'TICKER', 'Percent', 'DiscountData', 'Adj_Percent']]).fillna(0)
+
+
+    indexes = [ 'CEFIGX', 'CEFOIX','CEFHYX', 'CEFBLX', 'CEFX']
     # indexes = ['CEFHYX']
-    # for index in indexes:
-    #     cefx_merge(index, all_cefs_pd)
+    for index in indexes:
+        cefx_merge(index, all_cefs_pd)
         # break
 
 if __name__ == "__main__":
