@@ -81,11 +81,12 @@ def merge_all():
         if item_file == 'ZF_HISTORY.csv':
             continue
         all_cefs_pd = all_cefs_pd.append(data[['DataDateJs', 'TICKER', 'Percent', 'DiscountData']]).fillna(0)
+        break
 
-    indexes = [ 'CEFIGX', 'CEFOIX','CEFHYX', 'CEFBLX', 'CEFX']
+    # indexes = [ 'CEFIGX', 'CEFOIX','CEFHYX', 'CEFBLX', 'CEFX']
     # indexes = ['CEFHYX']
-    for index in indexes:
-        cefx_merge(index, all_cefs_pd)
+    # for index in indexes:
+    #     cefx_merge(index, all_cefs_pd)
         # break
 
 if __name__ == "__main__":
