@@ -124,8 +124,8 @@ def merge_all(adjusted=False):
             all_cefs_pd = all_cefs_pd.append(data[['DataDateJs', 'TICKER', 'Percent', 'DiscountData']]).fillna(0)
 
 
-    # indexes = [ 'CEFIGX', 'CEFOIX','CEFHYX', 'CEFBLX', 'CEFX']
-    indexes = ['CEFOIX']
+    indexes = [ 'CEFIGX', 'CEFOIX','CEFHYX', 'CEFBLX', 'CEFX']
+    # indexes = ['CEFOIX']
     for index in indexes:
         cefx_merge('CEFX', index, all_cefs_pd, adjusted)
         # break
