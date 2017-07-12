@@ -70,9 +70,12 @@ def cal_row_value(date, row, day_pd, sort, adjusted):
     row_weight = 0.001
     for symbol, weight in row.iteritems():
         if symbol in data_pd.index:
-            row_value += weight * data_pd.ix[symbol]['Percent']
             if adjusted:
                 full_value += weight * data_pd.ix[symbol]['Adj_Percent']
+            else:
+                if symbol == 'DSU':
+                    continue
+                row_value += weight * data_pd.ix[symbol]['Percent']
             row_weight += weight
 
     row_value *= 100.0 / row_weight
