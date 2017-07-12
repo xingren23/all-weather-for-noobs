@@ -35,6 +35,7 @@ def cefx_merge(index, all_cefs_pd):
         date = time.strftime('%Y-%m-%d')
         if date in day_groups.groups.keys():
             day_pd = day_groups.get_group(date)
+            day_pd.index = day_pd['TICKER']
 
             discount_value, full_discount_value = cal_row_value(date, row, day_pd, 'discount')
             preminum_value, full_preminum_value = cal_row_value(date, row, day_pd, 'preminum')
@@ -51,14 +52,13 @@ def cefx_merge(index, all_cefs_pd):
 
 def cal_row_value(date, row, day_pd, sort):
     if sort == 'discount':
-        data_pd = day_pd.sort_values(by='DiscountData',ascending=True)
-        data_pd = data_pd.head(int(0.3*len(day_pd)))
+        data_pd = day_pd.ix[row.index].sort_values(by='DiscountData',ascending=True).dropna()
+        data_pd = data_pd.head(int(0.3*len(data_pd)))
     elif sort == 'preminum':
-        data_pd = day_pd.sort_values(by='DiscountData',ascending=False)
-        data_pd = data_pd.head(int(0.3*len(day_pd)))
+        data_pd = day_pd.ix[row.index].sort_values(by='DiscountData',ascending=False).dropna()
+        data_pd = data_pd.head(int(0.3*len(data_pd)))
     else:
-        data_pd = day_pd
-    data_pd.index = data_pd['TICKER']
+        data_pd = day_pd.ix[row.index].dropna()
 
     # print day_pd
     row_value = 0.0
@@ -66,16 +66,12 @@ def cal_row_value(date, row, day_pd, sort):
     row_weight = 0.001
     for symbol, weight in row.iteritems():
         if symbol in data_pd.index:
-            # if date == '2016-11-18' and symbol == 'DSU':
-            #     print sort, symbol, weight, day_pd.ix[symbol]['Percent']
-            #     continue
             row_value += weight * data_pd.ix[symbol]['Percent']
             full_value += weight * data_pd.ix[symbol]['Adj_Percent']
             row_weight += weight
 
-    if sort == 'discount' or sort == 'preminum':
-        row_value *= 100.0 / row_weight
-        full_value *= 100.0 / row_weight
+    row_value *= 100.0 / row_weight
+    full_value *= 100.0 / row_weight
     return row_value, full_value
 
 
