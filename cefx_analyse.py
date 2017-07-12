@@ -49,9 +49,9 @@ def cefx_merge(index, all_cefs_pd, adjusted):
 
     returns_pd = pd.DataFrame(returns)
     if adjusted:
-        returns_pd.to_csv('%s/%s_MERGED_RETURNS.csv' % (DATA_PATH, index))
-    else:
         returns_pd.to_csv('%s/%s_ADJUSTED_MERGED_RETURNS.csv' % (DATA_PATH, index))
+    else:
+        returns_pd.to_csv('%s/%s_MERGED_RETURNS.csv' % (DATA_PATH, index))
 
 
 def cal_row_value(date, row, day_pd, sort, adjusted):
