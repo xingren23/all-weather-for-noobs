@@ -7,11 +7,19 @@ from datetime import datetime
 
 DATA_PATH = 'data/cef'
 
-def cefx_merge(index, all_cefs_pd, adjusted):
+def cefx_merge(index, in_index, all_cefs_pd, adjusted):
+
+    in_cefx_quarters = pd.read_csv('%s/%s_QUARTER_SNAPSHOT.csv' % (DATA_PATH,in_index))
+    in_cefx_quarters['Ticker'] = in_cefx_quarters['Ticker'].apply(lambda x: x[:x.find(" ")] if x.find(" ")>0 else x)
+    in_cefx_quarters.index = in_cefx_quarters['Ticker']
+    in_cefx_quarters.drop_duplicates(inplace=True)
 
     cefx_quarters = pd.read_csv('%s/%s_QUARTER_SNAPSHOT.csv' % (DATA_PATH,index))
     cefx_quarters['Ticker'] = cefx_quarters['Ticker'].apply(lambda x: x[:x.find(" ")] if x.find(" ")>0 else x)
+    # 只选择in_index中包括的股票代码
+    cefx_quarters = cefx_quarters.loc[cefx_quarters['Ticker'].isin(in_cefx_quarters.index)]
     cefx_quarters.index = cefx_quarters['Ticker']
+
     cefx_pd = pd.DataFrame()
     start_date = None
     end_date = None
@@ -115,10 +123,11 @@ def merge_all(adjusted=False):
             data = data.reset_index(drop=True)
             all_cefs_pd = all_cefs_pd.append(data[['DataDateJs', 'TICKER', 'Percent', 'DiscountData']]).fillna(0)
 
-    indexes = [ 'CEFIGX', 'CEFOIX','CEFHYX', 'CEFBLX', 'CEFX']
-    # indexes = ['CEFHYX']
+
+    # indexes = [ 'CEFIGX', 'CEFOIX','CEFHYX', 'CEFBLX', 'CEFX']
+    indexes = ['CEFOIX']
     for index in indexes:
-        cefx_merge(index, all_cefs_pd, adjusted)
+        cefx_merge('CEFX', index, all_cefs_pd, adjusted)
         # break
 
 if __name__ == "__main__":
