@@ -46,8 +46,6 @@ def cefx_merge(index, all_cefs_pd, adjusted):
                             'preminum_value': preminum_value, 'full_preminum_value': full_preminum_value,
                             'discount_value':discount_value, 'full_discount_value':full_discount_value
                             })
-            break
-
 
     returns_pd = pd.DataFrame(returns)
     if adjusted:
