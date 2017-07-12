@@ -37,14 +37,14 @@ def cefx_merge(index, all_cefs_pd, adjusted):
             day_pd = day_groups.get_group(date)
             day_pd.index = day_pd['TICKER']
 
-            discount_value, full_discount_value = cal_row_value(date, row, day_pd, 'discount', adjusted)
-            preminum_value, full_preminum_value = cal_row_value(date, row, day_pd, 'preminum', adjusted)
-            row_value, full_value = cal_row_value(date, row, day_pd, '', adjusted)
-            print date, row_value, discount_value, preminum_value
+            discount_value, full_discount_value, discount_ratio = cal_row_value(date, row, day_pd, 'discount', adjusted)
+            preminum_value, full_preminum_value, preminum_ratio = cal_row_value(date, row, day_pd, 'preminum', adjusted)
+            row_value, full_value, row_ratio = cal_row_value(date, row, day_pd, '', adjusted)
+            print date, row_value, discount_value, preminum_value, discount_ratio
             returns.append({'date': date,
-                            'value': row_value, 'full_value': full_value,
-                            'preminum_value': preminum_value, 'full_preminum_value': full_preminum_value,
-                            'discount_value':discount_value, 'full_discount_value':full_discount_value
+                            'value': row_value, 'full_value': full_value,'ratio': row_ratio,
+                            'preminum_value': preminum_value, 'full_preminum_value': full_preminum_value, 'preminum_ratio': preminum_ratio,
+                            'discount_value':discount_value, 'full_discount_value':full_discount_value, 'discount_ratio': discount_ratio,
                             })
 
     returns_pd = pd.DataFrame(returns)
@@ -81,11 +81,12 @@ def cal_row_value(date, row, day_pd, sort, adjusted):
             row_value += weight * data_pd.ix[symbol]['Percent']
             row_weight += weight
 
-            discount_ratio += weight
+            discount_ratio += weight * data_pd.ix[symbol]['DiscountData']
 
     row_value *= 100.0 / row_weight
     full_value *= 100.0 / row_weight
-    return row_value, full_value
+    discount_ratio *= 100.0 / row_weight
+    return row_value, full_value, discount_ratio
 
 
 def merge_all(adjusted=False):
