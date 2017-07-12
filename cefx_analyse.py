@@ -51,29 +51,31 @@ def cefx_merge(index, all_cefs_pd):
 
 def cal_row_value(date, row, day_pd, sort):
     if sort == 'discount':
-        day_pd.sort_values(by='DiscountData',ascending=True, inplace=True)
-        day_pd = day_pd.head(int(0.3*len(day_pd)))
+        data_pd = day_pd.sort_values(by='DiscountData',ascending=True)
+        data_pd = data_pd.head(int(0.3*len(day_pd)))
     elif sort == 'preminum':
-        day_pd.sort_values(by='DiscountData',ascending=False, inplace=True)
-        day_pd = day_pd.head(int(0.3*len(day_pd)))
-
-    day_pd.index = day_pd['TICKER']
+        data_pd = day_pd.sort_values(by='DiscountData',ascending=False)
+        data_pd = data_pd.head(int(0.3*len(day_pd)))
+    else:
+        data_pd = day_pd
+    data_pd.index = data_pd['TICKER']
 
     # print day_pd
     row_value = 0.0
     full_value = 0.0
     row_weight = 0.001
     for symbol, weight in row.iteritems():
-        if symbol in day_pd.index:
-            if date == '2016-11-18' and symbol == 'DSU':
-                continue
+        if symbol in data_pd.index:
+            # if date == '2016-11-18' and symbol == 'DSU':
             #     print sort, symbol, weight, day_pd.ix[symbol]['Percent']
-            row_value += weight * day_pd.ix[symbol]['Percent']
-            full_value += weight * day_pd.ix[symbol]['Adj_Percent']
+            #     continue
+            row_value += weight * data_pd.ix[symbol]['Percent']
+            full_value += weight * data_pd.ix[symbol]['Adj_Percent']
             row_weight += weight
 
-    row_value *= 1.0 / row_weight
-    full_value *= 1.0 / row_weight
+    if sort == 'discount' or sort == 'preminum':
+        row_value *= 100.0 / row_weight
+        full_value *= 100.0 / row_weight
     return row_value, full_value
 
 
@@ -88,8 +90,8 @@ def merge_all():
         data.index = data['DataDateJs']
         yahoo_data = pd.read_csv('%s/%s_YAHOO_HISTORY.csv' % (DATA_PATH, symbol), index_col = 'Date')
         yahoo_data = yahoo_data.ix[data.index]
-        data['Adj_Percent'] = yahoo_data['Adj Close'].astype(float).pct_change() * 100
-        data['Percent'] = yahoo_data['Close'].astype(float).pct_change() * 100
+        data['Adj_Percent'] = yahoo_data['Adj Close'].astype(float).pct_change(5)
+        data['Percent'] = yahoo_data['Close'].astype(float).pct_change(5)
 
         if symbol == 'BGX':
             continue
