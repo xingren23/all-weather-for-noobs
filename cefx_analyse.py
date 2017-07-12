@@ -69,7 +69,7 @@ def cal_row_value(date, row, day_pd, sort):
                 continue
             #     print sort, symbol, weight, day_pd.ix[symbol]['Percent']
             row_value += weight * day_pd.ix[symbol]['Percent']
-            full_value += weight * day_pd.ix[symbol]['Percent']
+            full_value += weight * day_pd.ix[symbol]['Adj_Percent']
             row_weight += weight
 
     row_value *= 1.0 / row_weight
