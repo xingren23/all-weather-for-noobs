@@ -44,7 +44,9 @@ def cefx_merge(index, all_cefs_pd, adjusted):
             returns.append({'date': date,
                             'value': row_value, 'full_value': full_value,
                             'preminum_value': preminum_value, 'full_preminum_value': full_preminum_value,
-                            'discount_value':discount_value, 'full_discount_value':full_discount_value})
+                            'discount_value':discount_value, 'full_discount_value':full_discount_value
+                            })
+            break
 
 
     returns_pd = pd.DataFrame(returns)
@@ -64,19 +66,24 @@ def cal_row_value(date, row, day_pd, sort, adjusted):
     else:
         data_pd = day_pd.ix[row.index].dropna()
 
+    # print row, data_pd, adjusted
+
     # print day_pd
     row_value = 0.0
     full_value = 0.0
     row_weight = 0.001
+    discount_ratio = 0
     for symbol, weight in row.iteritems():
         if symbol in data_pd.index:
             if adjusted:
                 full_value += weight * data_pd.ix[symbol]['Adj_Percent']
-                
+
             if symbol == 'DSU':
                 continue
             row_value += weight * data_pd.ix[symbol]['Percent']
             row_weight += weight
+
+            discount_ratio += weight
 
     row_value *= 100.0 / row_weight
     full_value *= 100.0 / row_weight
@@ -98,8 +105,8 @@ def merge_all(adjusted=False):
             # yahoo_history 是日净值 -> 转换为周净值
             yahoo_data = pd.read_csv('%s/%s_YAHOO_HISTORY.csv' % (DATA_PATH, symbol), index_col = 'Date')
             yahoo_data = yahoo_data.ix[data.index]
-            data['Adj_Percent'] = yahoo_data['Adj Close'].astype(float).pct_change(5)
-            data['Percent'] = yahoo_data['Close'].astype(float).pct_change(5)
+            data['Adj_Percent'] = yahoo_data['Adj Close'].astype(float).pct_change()
+            data['Percent'] = yahoo_data['Close'].astype(float).pct_change()
             data = data.reset_index(drop=True)
             all_cefs_pd = all_cefs_pd.append(data[['DataDateJs', 'TICKER', 'Percent', 'DiscountData', 'Adj_Percent']]).fillna(0)
 
