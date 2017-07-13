@@ -36,6 +36,8 @@ def cefx_merge(index, in_index, index_classes, all_cefs_pd, adjusted):
     returns = []
     for time,row in cefx_pd.T.iteritems():
         date = time.strftime('%Y-%m-%d')
+        # if date < '2006-04-21':
+        #     continue
         if date in day_groups.groups.keys():
             day_pd = day_groups.get_group(date)
             day_pd.index = day_pd['TICKER']
@@ -79,11 +81,11 @@ def cal_row_value(index, in_index, index_classes, date, row, day_pd, sort, adjus
             data_pd = pd.DataFrame()
             total_num = len(row) * 0.3
             for type, type_w in index_classes[in_index].iteritems():
-                type_pd = day_pd.loc[day_pd.index.isin(index_classes[type])].sort_values(by='DiscountData', ascending=True)
+                type_pd = day_pd.loc[day_pd.index.isin(index_classes[type])].sort_values(by='DiscountData', ascending=False)
                 type_pd = type_pd.head(int(type_w*total_num))
                 data_pd = data_pd.append(type_pd)
         else:
-            data_pd = day_pd.loc[day_pd.index.isin(index_classes[in_index])].sort_values(by='DiscountData', ascending=True)
+            data_pd = day_pd.loc[day_pd.index.isin(index_classes[in_index])].sort_values(by='DiscountData', ascending=False)
             data_pd = data_pd.head(int(0.3*len(data_pd)))
     else:
         data_pd = day_pd
@@ -100,6 +102,7 @@ def cal_row_value(index, in_index, index_classes, date, row, day_pd, sort, adjus
     for symbol, weight in row.iteritems():
         if symbol in data_pd.index:
             if adjusted:
+                print symbol, weight, data_pd.ix[symbol]['Adj_Percent']
                 full_value += weight * data_pd.ix[symbol]['Adj_Percent']
                 volume += weight * data_pd.ix[symbol]['Volume']
 
@@ -131,13 +134,12 @@ def merge_all(adjusted=False):
         if adjusted:
             # yahoo_history 是日净值 -> 转换为周净值
             yahoo_data = pd.read_csv('%s/%s_YAHOO_HISTORY.csv' % (DATA_PATH, symbol), index_col = 'Date')
-            yahoo_data = yahoo_data.ix[data.index].fillna(0)
             data['Adj_Percent'] = yahoo_data['Adj Close'].astype(float).pct_change()
             data['Percent'] = yahoo_data['Close'].astype(float).pct_change()
             # yahoo 数据源 close与adj close 乱了
-            data['Volume'] = yahoo_data['Volume'].astype(int) * yahoo_data['Adj Close'].astype(float)
+            data['Volume'] = yahoo_data['Volume'].fillna(0).astype(int) * yahoo_data['Adj Close'].astype(float)
             data = data.reset_index(drop=True)
-            all_cefs_pd = all_cefs_pd.append(data[['DataDateJs', 'TICKER', 'Percent', 'Volume', 'DiscountData', 'Adj_Percent']])
+            all_cefs_pd = all_cefs_pd.append(data[['DataDateJs', 'TICKER', 'Percent', 'Volume', 'DiscountData', 'Adj_Percent']]).fillna(0)
 
         else:
             # history 是周净值
