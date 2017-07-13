@@ -58,31 +58,37 @@ def cefx_merge(index, in_index, index_classes, all_cefs_pd, adjusted):
 
 
 def cal_row_value(index, in_index, index_classes, date, row, day_pd, sort, adjusted):
+
+    row = row[row>0]
+    day_pd = day_pd.loc[day_pd.index.isin(row.index)]
     if sort == 'discount':
         if index == in_index:
             # 类型中性化
             data_pd = pd.DataFrame()
+            total_num = len(row) * 0.3
             for type, type_w in index_classes[in_index].iteritems():
-                type_pd = day_pd.ix[index_classes[type]].sort_values(by='DiscountData', ascending=True).dropna()
-                type_pd = type_pd.head(int(type_w*0.3*len(data_pd)))
-                data_pd.append(type_pd)
+                type_pd = day_pd.loc[day_pd.index.isin(index_classes[type])].sort_values(by='DiscountData', ascending=True)
+                type_pd = type_pd.head(int(type_w*total_num))
+                data_pd = data_pd.append(type_pd)
         else:
-            data_pd = day_pd.ix[row.index].sort_values(by='DiscountData', ascending=True).dropna()
+            data_pd = day_pd.loc[day_pd.index.isin(index_classes[in_index])].sort_values(by='DiscountData', ascending=True)
             data_pd = data_pd.head(int(0.3*len(data_pd)))
     elif sort == 'preminum':
         if index == in_index:
             # 类型中性化
             data_pd = pd.DataFrame()
+            total_num = len(row) * 0.3
             for type, type_w in index_classes[in_index].iteritems():
-                type_pd = day_pd.ix[index_classes[type]].sort_values(by='DiscountData', ascending=True).dropna()
-                type_pd = type_pd.head(int(type_w*0.3*len(data_pd)))
-                data_pd.append(type_pd)
+                type_pd = day_pd.loc[day_pd.index.isin(index_classes[type])].sort_values(by='DiscountData', ascending=True)
+                type_pd = type_pd.head(int(type_w*total_num))
+                data_pd = data_pd.append(type_pd)
         else:
-            data_pd = day_pd.ix[row.index].sort_values(by='DiscountData', ascending=False).dropna()
+            data_pd = day_pd.loc[day_pd.index.isin(index_classes[in_index])].sort_values(by='DiscountData', ascending=True)
             data_pd = data_pd.head(int(0.3*len(data_pd)))
     else:
-        data_pd = day_pd.ix[row.index].dropna()
+        data_pd = day_pd
 
+    data_pd.drop_duplicates(inplace=True)
     # print row, data_pd, adjusted
 
     # print day_pd
@@ -158,7 +164,6 @@ def merge_all(adjusted=False):
         cefx_merge('CEFX',index, index_classes, all_cefs_pd, adjusted)
 
 
-
 if __name__ == "__main__":
-    # merge_all(False)
+    merge_all(False)
     merge_all(True)
