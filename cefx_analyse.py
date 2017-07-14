@@ -36,6 +36,9 @@ def cefx_merge(index, in_index, index_groups, all_cefs_pd, adjusted):
     print index, 'merge index returns.'
     day_groups = all_cefs_pd.groupby('DataDateJs')
     returns = []
+    last_discount_pd = pd.DataFrame()
+    last_preminum_pd = pd.DataFrame()
+    last_pd = pd.DataFrame()
     for time,row in cefx_pd.T.iteritems():
         date = time.strftime('%Y-%m-%d')
         # if date != '2008-10-03':
@@ -45,14 +48,20 @@ def cefx_merge(index, in_index, index_groups, all_cefs_pd, adjusted):
             day_pd.index = day_pd['TICKER']
 
             row = row[row>0]
-            discount_value, full_discount_value, discount_ratio, discount_volume = cal_row_value(index, in_index, index_groups, date, row, day_pd, 'discount', adjusted)
-            preminum_value, full_preminum_value, preminum_ratio, preminum_volume = cal_row_value(index, in_index, index_groups, date, row, day_pd, 'preminum', adjusted)
-            row_value, full_value, row_ratio, row_volume = cal_row_value(index, in_index, index_groups, date, row, day_pd, 'normal', adjusted)
-            print date, row_value, row_ratio, row_volume, discount_value, preminum_value
+            discount_value, full_discount_value, discount_ratio, discount_volume, discount_turnover, last_discount_pd = \
+                cal_row_value(index, in_index, index_groups, date, row, day_pd, 'discount', adjusted, last_discount_pd)
+            preminum_value, full_preminum_value, preminum_ratio, preminum_volume, preminum_turnover, last_preminum_pd = \
+                cal_row_value(index, in_index, index_groups, date, row, day_pd, 'preminum', adjusted, last_preminum_pd)
+            row_value, full_value, row_ratio, row_volume, row_turnover, last_pd \
+                = cal_row_value(index, in_index, index_groups, date, row, day_pd, 'normal', adjusted, last_pd)
+            print date, row_value, row_ratio, row_volume, row_turnover, discount_value, preminum_value
             returns.append({'date': date,
-                            'value': row_value, 'full_value': full_value,'ratio': row_ratio, 'row_volume': row_volume,
-                            'preminum_value': preminum_value, 'full_preminum_value': full_preminum_value, 'preminum_ratio': preminum_ratio, 'preminum_volume': preminum_volume,
-                            'discount_value':discount_value, 'full_discount_value':full_discount_value, 'discount_ratio': discount_ratio, 'discount_volume': discount_volume,
+                            'value': row_value, 'full_value': full_value,
+                            'ratio': row_ratio, 'volume': row_volume, 'turnover': row_turnover,
+                            'preminum_value': preminum_value, 'full_preminum_value': full_preminum_value,
+                            'preminum_ratio': preminum_ratio, 'preminum_volume': preminum_volume, 'preminum_turnover':preminum_turnover,
+                            'discount_value':discount_value, 'full_discount_value':full_discount_value,
+                            'discount_ratio': discount_ratio, 'discount_volume': discount_volume, 'discount_turnover': discount_turnover
                             })
 
     returns_pd = pd.DataFrame(returns)
@@ -62,8 +71,9 @@ def cefx_merge(index, in_index, index_groups, all_cefs_pd, adjusted):
         returns_pd.to_csv('%s/%s_MERGED_RETURNS.csv' % (DATA_PATH, in_index))
 
 
-def cal_row_value(index, in_index, index_groups, date, row, day_pd, sort, adjusted):
+def cal_row_value(index, in_index, index_groups, date, row, day_pd, sort, adjusted, last_day_pd):
     day_pd = day_pd.loc[day_pd.index.isin(row.index)]
+    day_pd['weight'] = row
     if sort == 'discount':
         if index == in_index:
             # 类型中性化
@@ -100,24 +110,31 @@ def cal_row_value(index, in_index, index_groups, date, row, day_pd, sort, adjust
     row_weight = 0.001
     discount_ratio = 0
     volume = 0.0
-    for symbol, weight in row.iteritems():
-        if symbol in data_pd.index:
-            if adjusted:
-                full_value += weight * data_pd.ix[symbol]['Adj_Percent']
-                # volume += weight * data_pd.ix[symbol]['Volume']
+    turnover = 0.0
+    for symbol in data_pd.index:
+        weight = data_pd.ix[symbol]['weight']
+        if adjusted:
+            full_value += weight * data_pd.ix[symbol]['Adj_Percent']
+            volume += weight * data_pd.ix[symbol]['Volume']
 
-            if symbol == 'DSU':
-                continue
-            row_value += weight * data_pd.ix[symbol]['Percent']
-            row_weight += weight
+        if symbol == 'DSU':
+            continue
+        row_value += weight * data_pd.ix[symbol]['Percent']
+        row_weight += weight
 
-            discount_ratio += weight * data_pd.ix[symbol]['DiscountData']
+        discount_ratio += weight * data_pd.ix[symbol]['DiscountData']
+        # 不再上次的data_pd中,意味着换手
+        if symbol not in last_day_pd.index:
+            turnover += weight
+
+    last_day_pd = data_pd
 
     row_value *= 100.0 / row_weight
     full_value *= 100.0 / row_weight
     discount_ratio *= 100.0 / row_weight
     volume *= 100.0 / row_weight
-    return row_value, full_value, discount_ratio, volume
+    turnover *= 100.0 / row_weight
+    return row_value, full_value, discount_ratio, volume, turnover, last_day_pd
 
 def load_cefs_history(adjusted):
     # load cefs history data
