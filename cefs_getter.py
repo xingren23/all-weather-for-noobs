@@ -27,15 +27,17 @@ def get_histories():
 
 def get_discributions():
     distributions_pd = pd.DataFrame()
-    cefs = pd.read_csv('data/CEFConnect.csv')
+    cefs = pd.read_csv('data/cef/CEFConnect.csv')
     for key, item in cefs.iterrows():
         ticker = item['TICKER']
         res = get_distribution(ticker=ticker)
-        if len(res['Data']) > 0:
+        if res.has_key('Success') and not res['Success']:
+            print ticker, " get history error"
+        elif len(res['Data']) > 0:
             dist_pd = pd.DataFrame(data=res['Data'])
             dist_pd['TICKER'] = ticker
             dist_pd.to_csv('data/cef/%s_DIST.csv' % item['TICKER'])
-            distributions_pd = distributions_pd.append(dist_pd.ix[0])
+            distributions_pd = distributions_pd.append(dist_pd)
             print ticker, " get history distribution."
         else:
             print ticker, " not found distribution."
@@ -91,7 +93,7 @@ def download_all_quarter_snapshots():
         result_df.to_csv('data/cef/%s_QUARTER_SNAPSHOT.csv' % index)
 
 if __name__ == "__main__":
-    # get_discributions()
+    get_discributions()
     # get_histories()
     # download_all_quarter_snapshots()
-    download_index_returns()
+    # download_index_returns()
