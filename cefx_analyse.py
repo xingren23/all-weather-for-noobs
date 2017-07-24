@@ -114,12 +114,19 @@ def cal_row_value(index, in_index, index_groups, date, row, day_pd, sort, adjust
     for symbol in data_pd.index:
         weight = data_pd.ix[symbol]['weight']
         if adjusted:
-            full_value += weight * data_pd.ix[symbol]['Adj_Percent']
+            if sort == 'discount' or sort == 'preminum':
+                full_value += weight * data_pd.ix[symbol]['Discount_Adj_Percent']
+            else:
+                full_value += weight * data_pd.ix[symbol]['Adj_Percent']
             volume += weight * data_pd.ix[symbol]['Volume']
 
         if symbol == 'DSU':
             continue
-        row_value += weight * data_pd.ix[symbol]['Percent']
+
+        if sort == 'discount' or sort == 'preminum':
+            row_value += weight * data_pd.ix[symbol]['Discount_Percent']
+        else:
+            row_value += weight * data_pd.ix[symbol]['Percent']
         row_weight += weight
 
         discount_ratio += weight * data_pd.ix[symbol]['DiscountData']
@@ -160,16 +167,21 @@ def load_cefs_history(adjusted):
                 yahoo_data = yahoo_data.ix[data.index]
                 data['Adj_Percent'] = yahoo_data['Adj Close'].astype(float).pct_change()
                 data['Percent'] = yahoo_data['Close'].astype(float).pct_change()
+                data['Discount_Adj_Percent'] = yahoo_data['Adj Close'].astype(float).pct_change().shift(-1)
+                data['Discount_Percent'] = yahoo_data['Close'].astype(float).pct_change().shift(-1)
                 # yahoo 数据源 close与adj close 乱了
                 data['Volume'] = yahoo_data['Volume'].fillna(0).astype(int) * yahoo_data['Adj Close'].astype(float)
                 data = data.reset_index(drop=True)
-                all_cefs_pd = all_cefs_pd.append(data[['DataDateJs', 'TICKER', 'Percent', 'Volume', 'DiscountData', 'Adj_Percent']]).fillna(0)
+                all_cefs_pd = all_cefs_pd.append(data[['DataDateJs', 'TICKER', 'Percent', 'Volume',
+                                                       'DiscountData', 'Adj_Percent', 'Discount_Adj_Percent', 'Discount_Percent']]).fillna(0)
 
             else:
                 # history 是周净值
                 data['Percent'] = data['Data'].astype(float).pct_change()
+                data['Discount_Percent'] = data['Data'].astype(float).pct_change().shift(-1)
                 data = data.reset_index(drop=True)
-                all_cefs_pd = all_cefs_pd.append(data[['DataDateJs', 'TICKER', 'Percent', 'DiscountData']]).fillna(0)
+                all_cefs_pd = all_cefs_pd.append(data[['DataDateJs', 'TICKER', 'Percent', 'DiscountData',
+                                                    'Discount_Percent']]).fillna(0)
         if adjusted:
             all_cefs_pd[all_cefs_pd['DataDateJs']>'2001-01-01'].to_csv(all_yahoo_history)
         else:
