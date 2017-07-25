@@ -78,26 +78,26 @@ def cal_row_value(index, in_index, index_groups, date, row, day_pd, sort, adjust
         if index == in_index:
             # 类型中性化
             data_pd = pd.DataFrame()
-            total_num = len(row) * 0.20
+            total_num = len(row) * 0.25
             for type, type_w in INDEX_WEIGHTS.iteritems():
                 type_pd = day_pd.loc[day_pd.index.isin(index_groups.get_group(type)['Ticker'])].sort_values(by='DiscountData', ascending=True)
                 type_pd = type_pd.head(int(type_w * total_num))
                 data_pd = data_pd.append(type_pd)
         else:
             data_pd = day_pd.loc[day_pd.index.isin(index_groups.get_group(in_index)['Ticker'])].sort_values(by='DiscountData', ascending=True)
-            data_pd = data_pd.head(int(0.20*len(data_pd)))
+            data_pd = data_pd.head(int(0.25*len(data_pd)))
     elif sort == 'preminum':
         if index == in_index:
             # 类型中性化
             data_pd = pd.DataFrame()
-            total_num = len(row) * 0.10
+            total_num = len(row) * 0.25
             for type, type_w in INDEX_WEIGHTS.iteritems():
                 type_pd = day_pd.loc[day_pd.index.isin(index_groups.get_group(type)['Ticker'])].sort_values(by='DiscountData', ascending=False)
                 type_pd = type_pd.head(int(type_w*total_num))
                 data_pd = data_pd.append(type_pd)
         else:
             data_pd = day_pd.loc[day_pd.index.isin(index_groups.get_group(in_index)['Ticker'])].sort_values(by='DiscountData', ascending=False)
-            data_pd = data_pd.head(int(0.10*len(data_pd)))
+            data_pd = data_pd.head(int(0.25*len(data_pd)))
     else:
         data_pd = day_pd
 
@@ -213,7 +213,7 @@ def merge_all(adjusted=False):
     # load types
     index_types_pd = load_cefs_types()
 
-    indexes = ['CEFHYX']
+    indexes = ['CEFX']
     for index in indexes:
         cefx_merge('CEFX', index, index_types_pd.groupby('TYPE'), all_cefs_pd, adjusted)
 
