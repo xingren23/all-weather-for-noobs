@@ -78,7 +78,7 @@ def cal_row_value(index, in_index, index_groups, date, row, day_pd, sort, adjust
         if index == in_index:
             # 类型中性化
             data_pd = pd.DataFrame()
-            total_num = len(row) * 0.15
+            total_num = len(row) * 0.05
             for type, type_w in INDEX_WEIGHTS.iteritems():
                 type_pd = day_pd.loc[day_pd.index.isin(index_groups.get_group(type)['Ticker'])].sort_values(by='DiscountData', ascending=True)
                 type_pd = type_pd.head(int(type_w * total_num))
@@ -90,14 +90,14 @@ def cal_row_value(index, in_index, index_groups, date, row, day_pd, sort, adjust
         if index == in_index:
             # 类型中性化
             data_pd = pd.DataFrame()
-            total_num = len(row) * 0.15
+            total_num = len(row) * 0.05
             for type, type_w in INDEX_WEIGHTS.iteritems():
                 type_pd = day_pd.loc[day_pd.index.isin(index_groups.get_group(type)['Ticker'])].sort_values(by='DiscountData', ascending=False)
                 type_pd = type_pd.head(int(type_w*total_num))
                 data_pd = data_pd.append(type_pd)
         else:
             data_pd = day_pd.loc[day_pd.index.isin(index_groups.get_group(in_index)['Ticker'])].sort_values(by='DiscountData', ascending=False)
-            data_pd = data_pd.head(int(0.15*len(data_pd)))
+            data_pd = data_pd.head(int(0.05*len(data_pd)))
     else:
         data_pd = day_pd
 
